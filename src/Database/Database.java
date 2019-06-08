@@ -1,6 +1,5 @@
 package Database;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -24,9 +23,9 @@ public class Database {
         createCategoriesTable();
         createComplaintsTable();
         createEventsCategoriesConnectionsTable();
-        createEventsTalbe();
+        createEventsTable();
         createNoticesTable();
-        createOrganizatiosnTable();
+        createOrganizationsTable();
         createUpdatesTable();
         createUsersTable();
     }
@@ -94,7 +93,7 @@ public class Database {
     /**
      * create a new users table if it not already exist's
      */
-    private void createOrganizatiosnTable() {
+    private void createOrganizationsTable() {
         // SQLite connection string
         // String url = "jdbc:sqlite:data.db";
         // SQL statement for creating a new table
@@ -131,14 +130,14 @@ public class Database {
         }
     }
 
-    private void createEventsTalbe() {
+    private void createEventsTable() {
         // SQLite connection string
         // String url = "jdbc:sqlite:data.db";
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS events (\n"
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, \n"
-                + "	title TEXT PRIMARY KEY NOT NULL, \n"
-                + "	time_published TEXT PRIMARY KEY NOT NULL, \n"
+                + "	title TEXT NOT NULL, \n"
+                + "	time_published TEXT NOT NULL, \n"
                 + "	representative_user_name TEXT NOT NULL, \n"
                 + "	status TEXT NOT NULL, \n"
                 + "	organization TEXT NOT NULL, \n"
@@ -160,7 +159,7 @@ public class Database {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS eventscateogiresconnections (\n"
                 + "event_id INTEGER NOT NULL, \n"
-                + "	cateogry_name TEXT NOT NULL, \n"
+                + "	category_name TEXT NOT NULL, \n"
                 +" CONSTRAINT fk_event_id FOREIGN KEY(event_id) REFERENCES events(id) ON DELETE CASCADE"
                 +" CONSTRAINT fk_category_name FOREIGN KEY(category_name) REFERENCES categories(name) ON DELETE CASCADE);";
 
@@ -179,8 +178,8 @@ public class Database {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS updates (\n"
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, \n"
-                + "	date_created TEXT PRIMARY KEY NOT NULL, \n"
-                + "	description TEXT PRIMARY KEY NOT NULL, \n"
+                + "	date_created TEXT NOT NULL, \n"
+                + "	description TEXT NOT NULL, \n"
                 + "	initial_description TEXT NOT NULL, \n"
                 + "	event_id TEXT NOT NULL, \n"
                 + "	previous_update_id TEXT NOT NULL, \n"
@@ -201,10 +200,11 @@ public class Database {
         // String url = "jdbc:sqlite:data.db";
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS notices (\n"
-                + "from_user TEXT PRIMARY KEY NOT NULL, \n"
-                + "	to_user TEXT PRIMARY KEY NOT NULL, \n"
-                + "	event_id TEXT PRIMARY KEY NOT NULL, \n"
+                + "from_user TEXT NOT NULL, \n"
+                + "	to_user TEXT NOT NULL, \n"
+                + "	event_id TEXT NOT NULL, \n"
                 + "	status TEXT NOT NULL, \n"
+                + "	PRIMARY KEY (from_user, to_user, event_id) \n"
                 + ");";
 
         try (Statement stmt = conn.createStatement();
