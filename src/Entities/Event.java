@@ -1,4 +1,5 @@
-import java.util.List;
+package Entities;
+
 import java.util.Set;
 
 public class Event {
