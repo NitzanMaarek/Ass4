@@ -8,13 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://C:/Nitzan/BGU/שנה ג'/סמסטר ו'/ניתוץ 2/עבודות הגשה/עבודה 4/JDBC SQLlite Drivers/sqlite-jdbc-3.23.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.27.2.1" level="project" />
   </component>
 </module>

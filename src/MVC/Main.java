@@ -3,6 +3,9 @@ package MVC;
 //import MVC.Users.VacationsView;
 import MVC.Controller.Controller;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import Entities.EntityController;
 import MVC.Model.Model;
@@ -19,6 +22,7 @@ public class Main extends Application{
         Model model = new Model();
         Controller controller = new Controller(model);
 
+//
 //        FXMLLoader loader = new FXMLLoader();
 //
 //        Parent root = loader.load(Main.class.getResourceAsStream("Users/VacationsScene.fxml"));
@@ -28,19 +32,19 @@ public class Main extends Application{
 //        primaryStage.setScene(new Scene(root, 550, 400));
 //
 //        primaryStage.setMinHeight(480);
-//        primaryStage.setMinWidth(580)
+//        primaryStage.setMinWidth(580);
 //
 //        primaryStage.setMaxHeight(480);
 //        primaryStage.setMaxWidth(580);
-
-
-
-        Locale.setDefault(Locale.ENGLISH);  //also import
-
-//        IView crudView = loader.getController();
-//        crudView.setController(entityController);
-//        ((VacationsView) crudView).setAllVacations();
-//        primaryStage.show();
+//
+//
+//
+//        Locale.setDefault(Locale.ENGLISH);  //also import
+//
+////        IView crudView = loader.getController();
+////        crudView.setController(entityController);
+////        ((VacationsView) crudView).setAllVacations();
+////        primaryStage.show();
     }
 
     public static void main(String[] args) {

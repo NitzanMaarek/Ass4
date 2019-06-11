@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.sqlite.JDBC;
 
 public class Database {
 
@@ -13,9 +14,12 @@ public class Database {
     public Database()
     {
         try {
+            Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(DB_URL);
         }
         catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
