@@ -19,7 +19,10 @@ public class Event {
         this.rep= rep;
         this.organization = organization;
         this.datePublished = new Date().toString();
-        this.categories.addAll(categories);
+        status="in progress";
+        if(categories!=null){
+            this.categories.addAll(categories);
+        }
     }
 
     public Event(int id ,String title, String datePublished,User rep,Organization organization, Set<Category> categories){

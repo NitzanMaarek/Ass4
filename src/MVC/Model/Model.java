@@ -6,6 +6,7 @@ import Database.EventCRUD;
 import Entities.Event;
 
 import java.util.List;
+import java.util.Map;
 
 public class Model {
     Database db = null;
@@ -18,12 +19,15 @@ public class Model {
 
     }
 
-    public List<Event> readAllEvents() {
-        return null;
-        //        return eventCRUD.read
+    public List<Map<String,String>> readAllEvents() {
+        return eventCRUD.readAllEvents();
     }
 
-    public List<Event> searchEventByCategories(List<String> categories) {
+    public void insertEvent(Event event){
+        eventCRUD.insertEvent(event);
+    }
+
+    public List<Map<String,String>> searchEventByCategories(List<String> categories) {
         return null;
     }
 }

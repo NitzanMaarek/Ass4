@@ -186,7 +186,7 @@ public class VacationsView implements IView {
 //        });
         List<String> categories = new ArrayList<>();
 //        String destination = "";
-        List<Event> events = null;
+        List<Map<String,String>> events = null;
         if (!txtfld_search.getText().equals("")){       //TODO: NEED TO GET CATEGORY INSTEAD OF DESTINATION FROM DROPDOWN MENU
 //            destination = txtfld_search.getText();
             events = myController.searchEventByCategories(categories);
@@ -197,8 +197,8 @@ public class VacationsView implements IView {
 //        String destination = txtfld_search.getText();
 //        List<Vacation> vacations = myController.searchVacattions(destination);
         List<ObservableEventTuple> eventTuples = new ArrayList<>();
-        for (Event event: events) {
-            eventTuples.add(new ObservableEventTuple(event.getTitle(), event.getDatePublished(), event.getRep().getName(), event.getStatus(), event.getOrganization().getName()));
+        for (Map<String,String> event: events) {
+            eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("repName"), event.get("organization")));
         }
 
 
@@ -208,10 +208,10 @@ public class VacationsView implements IView {
     }
 
     private List<ObservableEventTuple> getEventsTuples(){
-        List<Event> events = myController.readAllEvents();
+        List<Map<String,String>> events = myController.readAllEvents();
         List<ObservableEventTuple> eventTuples = new ArrayList<>();
-        for (Event event: events) {
-            eventTuples.add(new ObservableEventTuple(event.getTitle(), event.getDatePublished(), event.getRep().getName(), event.getStatus(), event.getOrganization().getName()));
+        for (Map<String,String> event: events) {
+            eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("repName"), event.get("organization")));
         }
         return eventTuples;
     }
