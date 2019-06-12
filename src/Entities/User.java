@@ -26,6 +26,9 @@ public class User {
     }
 
 
+    public String getName() {
+        return name;
+    }
 
     public int getRank() {
         return rank;

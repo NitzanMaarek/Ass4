@@ -32,6 +32,8 @@ public class Database {
         createOrganizationsTable();
         createUpdatesTable();
         createUsersTable();
+        closeConnection();
+        System.out.println("Tables Created");
     }
 
     // close the connection to the database

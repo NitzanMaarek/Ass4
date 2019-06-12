@@ -25,6 +25,8 @@ public class Organization {
         this.users.add(user);
     }
 
-
+    public String getName() {
+        return name;
+    }
 }
 

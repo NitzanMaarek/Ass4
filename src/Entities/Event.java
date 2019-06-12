@@ -1,5 +1,6 @@
 package Entities;
 
+import java.util.Date;
 import java.util.Set;
 
 public class Event {
@@ -7,10 +8,16 @@ public class Event {
     private String title;
     private String datePublished;
     private String status;
+    private User rep;
+    private Organization organization;
     private Set<Category> categories;
 
-    public Event(String title, Set<Category> categories){
+
+    public Event(String title,User rep,Organization organization, Set<Category> categories){
         this.title = title;
+        this.rep= rep;
+        this.organization = organization;
+        this.datePublished = new Date().toString();
         this.categories.addAll(categories);
     }
 
@@ -42,7 +49,25 @@ public class Event {
         System.out.println("Implement me");
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public String getDatePublished() {
+        return datePublished;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public User getRep() {
+        return rep;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
 }
 
 
