@@ -10,8 +10,8 @@ public class Event {
     private String status;
     private User rep;
     private Organization organization;
-    private Set<Category> categories;
-    private List<Update> updates;
+    private Set<Category> categories= new HashSet<>();;
+    private List<Update> updates = new ArrayList<>();
 
 
     public Event(String title,User rep,Organization organization, Set<Category> categories, List<Update> updates){
@@ -20,8 +20,7 @@ public class Event {
         this.organization = organization;
         this.datePublished = new Date().toString();
         status="Active";
-        categories= new HashSet<>();
-        updates= new ArrayList<>();
+
         if(categories!=null){
             this.categories.addAll(categories);
         }
