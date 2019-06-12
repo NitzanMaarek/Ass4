@@ -27,79 +27,79 @@ public class Main extends Application{
 
         Model model = new Model();
 
-        Category category = new Category("凸(艹皿艹 )");
-        Category category1 = new Category("凸(艹皿艹 )凸(艹皿艹 )");
-
-        model.insertCategory(category);
-        model.insertCategory(category1);
-
-
-        List<String> catList = model.readAllCategories();
-        System.out.println("CATEGOREIS");
-        for (String cat : catList){
-            System.out.print(cat+",");
-        }
-        System.out.println("--------------------------------------------------------------------------------");
-        Set<Category> a = new HashSet<>();
-        a.add(category1);
-        Organization organization = new Organization("nitzan Police");
-        Organization organization2 = new Organization("nitzan2 Police");
-        User user = new User("Nitzan",0,"nitzan@nitzan.com","123456",organization);
-        User user2 = new User("Nitzan2",0,"nitzan2@nitzan.com","123456",organization);
-        Event event = new Event("NitzanEvent" , user, organization, null , null);
-        Event event2 = new Event("NitzanEvent" , user2, organization2, a , null);
-        model.insertEvent(event);
-        model.insertEvent(event2);
-
-        List<Map<String,String>> mapList = model.readAllEvents();
-        System.out.println("EVENTS");
-        for (Map<String,String>  e: mapList ) {
-            for (String key : e.keySet() ) {
-                System.out.print(e.get(key)+",");
-            }
-            System.out.println();
-        }
+//        Category category = new Category("凸(艹皿艹 )");
+//        Category category1 = new Category("凸(艹皿艹 )凸(艹皿艹 )");
+//
+//        model.insertCategory(category);
+//        model.insertCategory(category1);
+////
+//
+//        List<String> catList = model.readAllCategories();
+//        System.out.println("CATEGOREIS");
+//        for (String cat : catList){
+//            System.out.print(cat+",");
+//        }
+//        System.out.println("--------------------------------------------------------------------------------");
+//        Set<Category> a = new HashSet<>();
+//        a.add(category1);
+//        Organization organization = new Organization("nitzan Police");
+//        Organization organization2 = new Organization("nitzan2 Police");
+//        User user = new User("Nitzan",0,"nitzan@nitzan.com","123456",organization);
+//        User user2 = new User("Nitzan2",0,"nitzan2@nitzan.com","123456",organization);
+//        Event event = new Event("NitzanEvent" , user, organization, null , null);
+//        Event event2 = new Event("NitzanEvent" , user2, organization2, a , null);
+//        model.insertEvent(event);
+//        model.insertEvent(event2);
+//
+//        List<Map<String,String>> mapList = model.readAllEvents();
+//        System.out.println("EVENTS");
+//        for (Map<String,String>  e: mapList ) {
+//            for (String key : e.keySet() ) {
+//                System.out.print(e.get(key)+",");
+//            }
+//            System.out.println();
+//        }
+        System.out.println("---------------------------------------------------------------------------------------");
+//
+//        List<String> categoriesByID = model.readEventsCateogiresConnectionsByID(2);
+//
+//        List<String> categoriesByID2 = model.readEventsCateogiresConnectionsByID(1);
+//
+//        System.out.println("CATEGORIES BY ID");
+//        for (String cat:categoriesByID ) {
+//            System.out.println(cat+",");
+//        }
+//
+//        for (String cat:categoriesByID2 ) {
+//            System.out.println(cat+",");
+//        }
         System.out.println("---------------------------------------------------------------------------------------");
 
-        List<String> categoriesByID = model.readEventsCateogiresConnectionsByID(2);
 
-        List<String> categoriesByID2 = model.readEventsCateogiresConnectionsByID(1);
+        Controller controller = new Controller(model);
 
-        System.out.println("CATEGORIES BY ID");
-        for (String cat:categoriesByID ) {
-            System.out.println(cat+",");
-        }
+        FXMLLoader loader = new FXMLLoader();
 
-        for (String cat:categoriesByID2 ) {
-            System.out.println(cat+",");
-        }
-        System.out.println("---------------------------------------------------------------------------------------");
+        Parent root = loader.load(Main.class.getResourceAsStream("Views/VacationsScene.fxml"));
+        System.out.println(Main.class.getResource("Style.css").toString());
+        root.getStylesheets().add(Main.class.getResource("Style.css").toString());
+        primaryStage.setTitle("Event4U");
+        primaryStage.setScene(new Scene(root, 550, 400));
+
+        primaryStage.setMinHeight(480);
+        primaryStage.setMinWidth(580);
+
+        primaryStage.setMaxHeight(480);
+        primaryStage.setMaxWidth(580);
 
 
-//        Controller controller = new Controller(model);
-//
-//        FXMLLoader loader = new FXMLLoader();
-//
-//        Parent root = loader.load(Main.class.getResourceAsStream("Views/VacationsScene.fxml"));
-//        System.out.println(Main.class.getResource("Style.css").toString());
-//        root.getStylesheets().add(Main.class.getResource("Style.css").toString());
-//        primaryStage.setTitle("Event4U");
-//        primaryStage.setScene(new Scene(root, 550, 400));
-//
-//        primaryStage.setMinHeight(480);
-//        primaryStage.setMinWidth(580);
-//
-//        primaryStage.setMaxHeight(480);
-//        primaryStage.setMaxWidth(580);
-//
-//
-//        Locale.setDefault(Locale.ENGLISH);  //also import
-//
-//        IView crudView = loader.getController();
-//        crudView.setController(controller);
-//        ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
-//        ((VacationsView) crudView).setAllCategories();  //TODO: change class name VacationsView
-//        primaryStage.show();
+        Locale.setDefault(Locale.ENGLISH);  //also import
+
+        IView crudView = loader.getController();
+        crudView.setController(controller);
+        ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
+        ((VacationsView) crudView).setAllCategories();  //TODO: change class name VacationsView
+        primaryStage.show();
 
     }
 

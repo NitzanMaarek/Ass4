@@ -4,18 +4,13 @@ package MVC.Model;
 import Database.Database;
 import Database.EventCRUD;
 import Database.EventscateogiresconnectionsCRUD;
-import Entities.Category;
-import Entities.Event;
-import Entities.Organization;
-import Entities.User;
+import Entities.*;
 
-import java.util.HashSet;
+import java.util.*;
+
 import Database.CategoryCRUD;
 
 import javax.print.DocFlavor;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class Model {
     Database db = null;
@@ -78,7 +73,10 @@ public class Model {
         Organization org = new Organization("Fire Department");
         User user = new User("ESO", org);
         String title = event.get("title");
-        Event eventToAdd = new Event(title, user, org, categoriesSet);
+        Update update = new Update(event.get("update"));
+        List<Update> updates = new ArrayList<>();
+        updates.add(update);
+        Event eventToAdd = new Event(title, user, org, categoriesSet, updates);
         insertEvent(eventToAdd);
     }
 }

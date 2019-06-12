@@ -165,10 +165,7 @@ public class VacationsView implements IView {
             rootPane.getChildren().setAll(pane);
             VacationCreateScene vacationCreateScene = loader.getController();
             vacationCreateScene.setController(myController);
-//            vacationCreateScene.changeDateFormat();
-            //give the selected user's info to the scene
-//            vacationCreateScene.setLoggdInUser(loggedInUser);
-
+            vacationCreateScene.setAllCategories();
         } catch (IOException e) {
             e.printStackTrace();
         }
