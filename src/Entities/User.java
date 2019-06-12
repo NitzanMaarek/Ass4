@@ -25,6 +25,10 @@ public class User {
         this.organization = organization;
     }
 
+    public User(String name, Organization organization){
+        this.name = name;
+        this.organization = organization;
+    }
 
     public String getName() {
         return name;

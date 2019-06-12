@@ -6,11 +6,16 @@ import Database.EventCRUD;
 import Database.EventscateogiresconnectionsCRUD;
 import Entities.Category;
 import Entities.Event;
+import Entities.Organization;
+import Entities.User;
+
+import java.util.HashSet;
 import Database.CategoryCRUD;
 
 import javax.print.DocFlavor;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Model {
     Database db = null;
@@ -62,5 +67,18 @@ public class Model {
 
     public List<Map<String,String>> searchEventByCategories(List<String> categories) {
         return null;
+    }
+
+    public void addEvent(Map<String, String> event) {
+        String[] categories = event.get("categories").split(",");
+        Set<Category> categoriesSet = new HashSet<>();
+        for(int i=0; i<categories.length; i++){
+            categoriesSet.add(new Category(categories[i]));
+        }
+        Organization org = new Organization("Fire Department");
+        User user = new User("ESO", org);
+        String title = event.get("title");
+        Event eventToAdd = new Event(title, user, org, categoriesSet);
+        insertEvent(eventToAdd);
     }
 }

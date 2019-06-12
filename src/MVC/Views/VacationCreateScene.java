@@ -32,9 +32,9 @@ public class VacationCreateScene implements Initializable {
     }
 
     private void setAllCategories(){
-//        List<String> categories = myController.getAllCategories();
+        List<String> categories = myController.getAllCategories();
         //TODO Remove bottom line and use the one above - test it.
-        List<String> categories = new ArrayList<>(Arrays.asList("Urgent", "Critical", "Normal"));
+//        List<String> categories = new ArrayList<>(Arrays.asList("Urgent", "Critical", "Normal"));
         for(String category : categories){
             CheckMenuItem itemToAdd = new CheckMenuItem(category);
             menubttn_categories.getItems().add(itemToAdd);
@@ -119,7 +119,7 @@ public class VacationCreateScene implements Initializable {
 
         List<String> alerts = new ArrayList<>();
 //        List<String> events = new ArrayList<>();
-        Map<String, String> events = new HashMap<>();
+        Map<String, String> event = new HashMap<>();
 
         String event_title = txtfld_title.getText();
         if (event_title.isEmpty()){
@@ -144,14 +144,15 @@ public class VacationCreateScene implements Initializable {
         }
         if (alerts.isEmpty()){
 //        vacationList.add(loggdInUser.getUsername());
-            events.put("title", event_title);
-            events.put("update", event_update);
+            event.put("title", event_title);
+            event.put("update", event_update);
             String categories = stringSetToStringWithComma(chosenCategories);
-            events.put("categories",categories);
+            event.put("categories",categories);
             String forces = stringSetToStringWithComma(chosenForces);
-            events.put("forces", forces);
+            event.put("forces", forces);
     //        myController.addVacationToDataBase(vacationList);
             showEventAlert("Event created successfully!");
+            myController.addEvent(event);
             openEventsView();
         }
         else {
@@ -177,8 +178,6 @@ public class VacationCreateScene implements Initializable {
             rootPane.getChildren().setAll(pane);
             VacationsView vacationsView = loader.getController();
             vacationsView.setController(myController);
-//            vacationsView.setLoggedInLable(loggdInUser.getUsername());
-//            vacationsView.setLoggedInUser(loggdInUser);
             vacationsView.setAllEvents();
         } catch (IOException e) {
             e.printStackTrace();
