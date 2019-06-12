@@ -37,6 +37,35 @@ public class EventCRUD {
 
     }
 
+//    public List<Event> readAllEvents(){
+//        List<Event> toReturn = new ArrayList<>();
+//        Connection conn = db.getConn();
+//
+//        String sql = "SELECT * " +
+//                "FROM events";
+//        try (PreparedStatement pstm = conn.prepareStatement(sql)){
+//            ResultSet rs = pstm.executeQuery();
+//            while(rs.next()){
+//
+//                String title = rs.getString(2);
+//                String date = rs.getString(3);
+//                String rep = rs.getString(4);
+//                String status = rs.getString(5);
+//                String categories = rs.getString(6);
+//                Event event = new Event(title,rep,);
+//                exchange.setExchangeId(Integer.toString(exId));
+//                toReturn.add(exchange);
+//            }
+//        }
+//        catch (SQLException E){
+//            System.out.println(E.getMessage());
+//        }
+//        db.closeConnection();
+//        return toReturn;
+//    }
+
+
+
     private List<String> convertToListFormat(Event event) {
         List<String> toReturn = new ArrayList();
         toReturn.add(event.getTitle());//0

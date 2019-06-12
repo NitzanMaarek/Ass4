@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class Event {
 
+    private String id;
     private String title;
     private String datePublished;
     private String status;
@@ -20,6 +21,15 @@ public class Event {
         this.datePublished = new Date().toString();
         this.categories.addAll(categories);
     }
+
+    public Event(int id ,String title, String datePublished,User rep,Organization organization, Set<Category> categories){
+        this.title = title;
+        this.datePublished=datePublished;
+        this.rep= rep;
+        this.organization = organization;
+        this.categories.addAll(categories);
+    }
+
 
     public void getParticipants(){
         System.out.println("Implement me");
@@ -67,6 +77,10 @@ public class Event {
 
     public Organization getOrganization() {
         return organization;
+    }
+
+    public String getId() {
+        return id;
     }
 }
 
