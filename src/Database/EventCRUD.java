@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EventCRUD {
     private Database db = null;
@@ -37,32 +39,39 @@ public class EventCRUD {
 
     }
 
-//    public List<Event> readAllEvents(){
-//        List<Event> toReturn = new ArrayList<>();
-//        Connection conn = db.getConn();
-//
-//        String sql = "SELECT * " +
-//                "FROM events";
-//        try (PreparedStatement pstm = conn.prepareStatement(sql)){
-//            ResultSet rs = pstm.executeQuery();
-//            while(rs.next()){
-//
-//                String title = rs.getString(2);
-//                String date = rs.getString(3);
-//                String rep = rs.getString(4);
-//                String status = rs.getString(5);
-//                String categories = rs.getString(6);
-//                Event event = new Event(title,rep,);
+    public List<Map<String,String>> readAllEvents(){
+        List<Map<String,String>> toReturn = new ArrayList<>();
+        Connection conn = db.getConn();
+
+        String sql = "SELECT * " +
+                "FROM events";
+        try (PreparedStatement pstm = conn.prepareStatement(sql)){
+            ResultSet rs = pstm.executeQuery();
+            while(rs.next()){
+                String exId =String.valueOf(rs.getInt(1));
+                String title = rs.getString(2);
+                String date = rs.getString(3);
+                String rep = rs.getString(4);
+                String status = rs.getString(5);
+                String categories = rs.getString(6);
+                Map<String,String> tmp = new HashMap<>();
+                tmp.put("id",exId);
+                tmp.put("title",title);
+                tmp.put("datePublished",date);
+                tmp.put("repName",rep);
+                tmp.put("status",status);
+                tmp.put("organization",categories);
+                toReturn.add(tmp);
 //                exchange.setExchangeId(Integer.toString(exId));
 //                toReturn.add(exchange);
-//            }
-//        }
-//        catch (SQLException E){
-//            System.out.println(E.getMessage());
-//        }
-//        db.closeConnection();
-//        return toReturn;
-//    }
+            }
+        }
+        catch (SQLException E){
+            System.out.println(E.getMessage());
+        }
+        db.closeConnection();
+        return toReturn;
+    }
 
 
 
