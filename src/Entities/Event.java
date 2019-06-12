@@ -26,6 +26,7 @@ public class Event {
     }
 
     public Event(int id ,String title, String datePublished,User rep,Organization organization, Set<Category> categories){
+        this.id= String.valueOf(id);
         this.title = title;
         this.datePublished=datePublished;
         this.rep= rep;

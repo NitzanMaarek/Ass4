@@ -14,4 +14,7 @@ public class Category {
         this.events.add(event);
     }
 
+    public String getName() {
+        return name;
+    }
 }
