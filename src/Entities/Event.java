@@ -1,7 +1,6 @@
 package Entities;
 
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 public class Event {
 
@@ -12,26 +11,23 @@ public class Event {
     private User rep;
     private Organization organization;
     private Set<Category> categories;
+    private List<Update> updates;
 
 
-    public Event(String title,User rep,Organization organization, Set<Category> categories){
+    public Event(String title,User rep,Organization organization, Set<Category> categories, List<Update> updates){
         this.title = title;
         this.rep= rep;
         this.organization = organization;
         this.datePublished = new Date().toString();
         status="Active";
+        categories= new HashSet<>();
+        updates= new ArrayList<>();
         if(categories!=null){
             this.categories.addAll(categories);
         }
-    }
-
-    public Event(int id ,String title, String datePublished,User rep,Organization organization, Set<Category> categories){
-        this.id= String.valueOf(id);
-        this.title = title;
-        this.datePublished=datePublished;
-        this.rep= rep;
-        this.organization = organization;
-        this.categories.addAll(categories);
+        if(updates!=null){
+            this.updates.addAll(updates);
+        }
     }
 
 
@@ -55,7 +51,7 @@ public class Event {
         System.out.println("Implement me");
     }
 
-    public Set<Category> getCategory(){
+    public Set<Category> getCategories(){
         return this.categories;
     }
 
