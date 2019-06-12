@@ -4,9 +4,9 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -48,14 +48,17 @@
          <children>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="450.0">
                <children>
-                  <TextField fx:id="txtfld_search" prefHeight="25.0" prefWidth="303.0" promptText="destination" />
+                  <Label text="Categories:   " />
+                  <MenuButton fx:id="menubttn_categories" mnemonicParsing="false" prefHeight="25.0" prefWidth="195.0" text="MenuButton">
+
+                  </MenuButton>
                   <Button fx:id="btn_search" mnemonicParsing="false" text="search" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="tbl_vacations" prefHeight="348.0" prefWidth="450.0">
+            <TableView fx:id="tbl_events" prefHeight="348.0" prefWidth="450.0">
               <columns>
                 <TableColumn fx:id="clmn_title" prefWidth="75.0" text="Title" />
                   <TableColumn fx:id="clmn_published_on" prefWidth="100.66663360595703" text="Published On" />
@@ -70,7 +73,10 @@
    <right>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_viewRequests" mnemonicParsing="false" text="View Requests" />
+            <Button fx:id="btn_viewCategories" mnemonicParsing="false" text="View Categories">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
             <Button fx:id="btn_sell" mnemonicParsing="false" text="Sell Vacation">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
