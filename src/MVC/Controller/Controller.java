@@ -1,6 +1,9 @@
 package MVC.Controller;
 
+import Entities.Event;
 import MVC.Model.Model;
+
+import java.util.List;
 
 public class Controller {
 
@@ -10,4 +13,7 @@ public class Controller {
         this.myModel = myModel;
     }
 
+    public List<Event> readAllEvents() {
+
+    }
 }
