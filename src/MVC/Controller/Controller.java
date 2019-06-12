@@ -25,4 +25,8 @@ public class Controller {
     public List<String> getAllCategories() {
         return null;
     }
+
+    public void addEvent(Map<String, String> event) {
+        myModel.addEvent(event);
+    }
 }

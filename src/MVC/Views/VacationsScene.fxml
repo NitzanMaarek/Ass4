@@ -48,8 +48,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="450.0">
                <children>
-                  <Label text="Categories:   " />
-                  <MenuButton fx:id="menubttn_categories" mnemonicParsing="false" prefHeight="25.0" prefWidth="195.0" text="MenuButton">
+                  <MenuButton fx:id="menubttn_categories" mnemonicParsing="false" prefHeight="25.0" prefWidth="245.0" text="Categories">
 
                   </MenuButton>
                   <Button fx:id="btn_search" mnemonicParsing="false" text="search" />
@@ -77,17 +76,17 @@
                <font>
                   <Font size="11.0" />
                </font></Button>
-            <Button fx:id="btn_sell" mnemonicParsing="false" text="Sell Vacation">
+            <Button fx:id="btn_newEvent" mnemonicParsing="false" onAction="#newEventClicked" text="New Event">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_buy" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" text="Purchase Vacation" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="btn_addCategoryToEvent" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" text="Add Category To Event" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_message" mnemonicParsing="false" text="Message Seller" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="btn_newCategory" mnemonicParsing="false" onAction="#newCategory" text="New Category" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
