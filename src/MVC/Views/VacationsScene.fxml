@@ -27,7 +27,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefWidth="231.0" text="Find A Vacation" textAlignment="CENTER" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label prefWidth="231.0" text="Find Events" textAlignment="CENTER" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font name="System Bold" size="28.0" />
                </font>
