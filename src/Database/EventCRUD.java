@@ -73,6 +73,26 @@ public class EventCRUD {
         return toReturn;
     }
 
+    public int getLastId(){
+        Connection conn = db.getConn();
+        int toReturn=0;
+
+        ResultSet rs;
+        String sql = "SELECT * " +
+                "    FROM    events" +
+                "    WHERE   id = (SELECT MAX(ID)  FROM events);";
+
+        try(PreparedStatement pstmt = conn.prepareStatement(sql)){
+             rs = pstmt.executeQuery();
+             toReturn = rs.getInt(1);
+
+        }
+        catch (SQLException E){
+            System.out.println(E.getMessage());
+        }
+    return toReturn;
+    }
+
 
 
     private List<String> convertToListFormat(Event event) {
