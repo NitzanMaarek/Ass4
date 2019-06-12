@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import Entities.EntityController;
 import MVC.Model.Model;
 //import MVC.Users.IView;
 
@@ -26,10 +25,10 @@ public class Main extends Application{
 
         FXMLLoader loader = new FXMLLoader();
 
-        Parent root = loader.load(Main.class.getResourceAsStream("Users/VacationsScene.fxml"));
+        Parent root = loader.load(Main.class.getResourceAsStream("Views/VacationsScene.fxml"));
         System.out.println(Main.class.getResource("Style.css").toString());
         root.getStylesheets().add(Main.class.getResource("Style.css").toString());
-        primaryStage.setTitle("EveryVacation4U");
+        primaryStage.setTitle("Event4U");
         primaryStage.setScene(new Scene(root, 550, 400));
 
         primaryStage.setMinHeight(480);
@@ -43,7 +42,7 @@ public class Main extends Application{
 
         IView crudView = loader.getController();
         crudView.setController(controller);
-        ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
+//        ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
         primaryStage.show();
 
     }

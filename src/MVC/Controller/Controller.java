@@ -14,6 +14,10 @@ public class Controller {
     }
 
     public List<Event> readAllEvents() {
+        return myModel.readAllEvents();
+    }
 
+    public List<Event> searchEventByCategories(List<String> categories) {
+        return myModel.searchEventByCategories(categories);
     }
 }
