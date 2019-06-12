@@ -3,6 +3,7 @@ import Entities.Event;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +28,10 @@ public class VacationsView implements IView {
     Button btn_search;
 
     @FXML
-    TextField txtfld_search;
+//    TextField txtfld_search;
+//    ObservableList<String> categories = FXCollections.observableArrayList("Urgent", "Critical", "Mild", "Regular");
+//    ListView<String> lstview_categories = new ListView<>();
+    MenuButton menubttn_categories = new MenuButton();
 
     @FXML
     TableView<ObservableEventTuple> tbl_events;
@@ -52,6 +56,26 @@ public class VacationsView implements IView {
     public void setAllEvents(){
         List<ObservableEventTuple> eventsTuples = getEventsTuples();
         tbl_events.setItems(FXCollections.observableArrayList(eventsTuples));
+    }
+
+    public void setAllCategories(){
+//        List<String> categories = myController.getAllCategories();
+        List<String> categories = new ArrayList<>(Arrays.asList("Urgent", "Critical", "Normal"));
+        for(String category : categories){
+            CheckMenuItem itemToAdd = new CheckMenuItem(category);
+            menubttn_categories.getItems().add(itemToAdd);
+        }
+    }
+
+    private Set<String> getChosenCategories(){
+        Set<String> chosenCategories = new HashSet<>();
+        for(MenuItem menuItem: menubttn_categories.getItems()){
+            CheckMenuItem checkMenuItem = (CheckMenuItem)menuItem;
+            if(checkMenuItem.isSelected()){
+                chosenCategories.add(checkMenuItem.getText());
+            }
+        }
+        return chosenCategories;
     }
 
 
@@ -174,38 +198,42 @@ public class VacationsView implements IView {
 //    }
 
     public void search(){
-
-//        tbl_events.sortPolicyProperty().set(t -> {
-//            Comparator<ObservableEventTuple> comparator = (r1, r2)
-//                    -> r1.isPriority & ! r2.isPriority ? 1 //vacations with priority go first
-//                    : r2.isPriority & ! r1.isPriority ? -1 //vacations with priority go first
-//                    : t.getComparator() == null ? 0 //no column sorted: don't change order
-//                    : t.getComparator().compare(r1, r2); //columns are sorted: sort accordingly
-//            FXCollections.sort(tbl_events.getItems(), comparator);
-//            return true;
-//        });
-        List<String> categories = new ArrayList<>();
-//        String destination = "";
-        List<Map<String,String>> events = null;
-        if (!txtfld_search.getText().equals("")){       //TODO: NEED TO GET CATEGORY INSTEAD OF DESTINATION FROM DROPDOWN MENU
-//            destination = txtfld_search.getText();
-            events = myController.searchEventByCategories(categories);
+        Set<String> chosenCategories = getChosenCategories();
+        List<Map<String,String>> eventsMap;
+        if(chosenCategories.size() == 0){
+            setAllEvents();
         }
-        else {
-            events = myController.readAllEvents();
+        else{
+            eventsMap = myController.readAllEvents();
+            List<ObservableEventTuple> eventTuples = new ArrayList<>();
+            for (Map<String,String> event: eventsMap) {
+                eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("repName"), event.get("organization")));
+            }
+            tbl_events.setItems(FXCollections.observableArrayList(eventTuples));
         }
-//        String destination = txtfld_search.getText();
-//        List<Vacation> vacations = myController.searchVacattions(destination);
-        List<ObservableEventTuple> eventTuples = new ArrayList<>();
-        for (Map<String,String> event: events) {
-            eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("repName"), event.get("organization")));
-        }
-
-
-        tbl_events.setItems(FXCollections.observableArrayList(eventTuples));
-
-        //TODO search and populate table
     }
+
+//    public void search(){
+//        List<String> categories = new ArrayList<>();
+//        List<Map<String,String>> events = null;
+////        if (!txtfld_search.getText().equals("")){       //TODO: NEED TO GET CATEGORY INSTEAD OF DESTINATION FROM DROPDOWN MENU
+//////            destination = txtfld_search.getText();
+////            events = myController.searchEventByCategories(categories);
+////        }
+////        else {
+////            events = myController.readAllEvents();
+////        }
+////        String destination = txtfld_search.getText();
+////        List<Vacation> vacations = myController.searchVacattions(destination);
+//        List<ObservableEventTuple> eventTuples = new ArrayList<>();
+//        for (Map<String,String> event: events) {
+//            eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("repName"), event.get("organization")));
+//        }
+//        tbl_events.setItems(FXCollections.observableArrayList(eventTuples));
+//        //TODO search and populate table
+//    }
+
+
 
     private List<ObservableEventTuple> getEventsTuples(){
         List<Map<String,String>> events = myController.readAllEvents();

@@ -21,4 +21,8 @@ public class Controller {
     public List<Map<String,String>> searchEventByCategories(List<String> categories) {
         return myModel.searchEventByCategories(categories);
     }
+
+    public List<String> getAllCategories() {
+        return null;
+    }
 }
