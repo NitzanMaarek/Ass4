@@ -148,7 +148,6 @@ public class EventsCreateScene implements Initializable {
             alerts.add("Select categories");
         }
         if (alerts.isEmpty()){
-//        vacationList.add(loggdInUser.getUsername());
             event.put("title", event_title);
             event.put("update", event_update);
             String categories = stringSetToStringWithComma(chosenCategories);
@@ -157,7 +156,6 @@ public class EventsCreateScene implements Initializable {
             event.put("forces", forces);
             event.put("username",loggedInUser.getName());
             event.put("organization", loggedInUser.getOrganization().getName());
-    //        myController.addVacationToDataBase(vacationList);
             showEventAlert("Event created successfully!");
             myController.addEvent(event);
             openEventsView();
@@ -183,11 +181,11 @@ public class EventsCreateScene implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             BorderPane pane = loader.load(getClass().getResource("MainEventsView.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            MainEventsView vacationsView = loader.getController();
-            vacationsView.setController(myController);
-            vacationsView.setLoggedInUser(loggedInUser);
-            vacationsView.setAllEvents();
-            vacationsView.setAllCategories();
+            MainEventsView mainEventsView = loader.getController();
+            mainEventsView.setController(myController);
+            mainEventsView.setLoggedInUser(loggedInUser);
+            mainEventsView.setAllEvents();
+            mainEventsView.setAllCategories();
         } catch (IOException e) {
             e.printStackTrace();
         }

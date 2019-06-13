@@ -76,10 +76,10 @@ public class AddCategoryToEventScene {
             FXMLLoader loader = new FXMLLoader();
             BorderPane pane = loader.load(getClass().getResource("MainEventsView.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            MainEventsView vacationsView = loader.getController();
-            vacationsView.setController(myController);
-            vacationsView.setLoggedInUser(loggedInUser);
-            vacationsView.setAllCategories();
+            MainEventsView mainEventsView = loader.getController();
+            mainEventsView.setController(myController);
+            mainEventsView.setLoggedInUser(loggedInUser);
+            mainEventsView.setAllCategories();
 
             // add user and add events to view
         } catch (IOException e) {
@@ -88,7 +88,7 @@ public class AddCategoryToEventScene {
     }
 
     /**
-     * Return to vacationsScene
+     * Return to mainEventsView
      * @param actionEvent
      */
     public void back(ActionEvent actionEvent) {
@@ -96,13 +96,11 @@ public class AddCategoryToEventScene {
             FXMLLoader loader = new FXMLLoader();
             BorderPane pane = loader.load(getClass().getResource("MainEventsView.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            MainEventsView vacationsView = loader.getController();
-            vacationsView.setController(myController);
-            vacationsView.setLoggedInUser(loggedInUser);
-            vacationsView.setAllCategories();
-//            vacationsView.setLoggedInUser(loggedInUser);
-//            vacationsView.setLoggedInLable(loggedInUser.getUsername());
-//            vacationsView.setAllVacations();
+            MainEventsView mainEventsView = loader.getController();
+            mainEventsView.setController(myController);
+            mainEventsView.setLoggedInUser(loggedInUser);
+            mainEventsView.setAllCategories();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

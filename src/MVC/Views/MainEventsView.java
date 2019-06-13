@@ -136,13 +136,6 @@ public class MainEventsView implements IView {
         }
     }
 
-    //    public void home(ActionEvent actionEvent) {
-//        Alert alert = new Alert(Alert.AlertType.WARNING, "The home screen is not supported in this demo.");
-//        alert.setHeaderText("Not Supported");
-//        alert.setTitle("Not Supported");
-//        alert.showAndWait();
-//    }
-
     public void addCategoryToEventClicked(ActionEvent actionEvent) {
         if(tbl_events.getSelectionModel().getSelectedIndex() <= -1){
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please select an Event to add a category.");
@@ -154,88 +147,21 @@ public class MainEventsView implements IView {
             int eventID = Integer.parseInt(getSelectedEventFromTable().eventID.getValue());
             //TODO Finish adding category to event once eventID is given.
         }
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-////                BorderPane pane = loader.load(getClass().getResource("AddCategoryToEventScene.fxml").openStream());
-////                rootPane.getChildren().setAll(pane);
-////                AddCategoryToEventScene vacationBuyScene = loader.getController();
-////                vacationBuyScene.setController(myController);
-////                //give the selected user's info to the scene
-////                vacationBuyScene.setLoggedInLabel(loggedInUser.getUsername());
-////                vacationBuyScene.setLoggedInUser(loggedInUser);
-////                vacationBuyScene.setTable();
-////                String value = getSelectedVacationFromTable().vacationID.toString();
-////                vacationBuyScene.setVacationIDBought(Integer.parseInt(getSelectedVacationFromTable().vacationID.getValue()));
-////                vacationBuyScene.setLbl_vacationInfo("Price: " + getSelectedVacationFromTable().price.get() + " on " + getSelectedVacationFromTable().departure.get() + " to " + getSelectedVacationFromTable().destination.get());
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-
-
     }
-
-//    /**
-//     *
-//     * @return a tuple with the fields of the selected row from the displayed table.
-//     */
-//    private void processTransaction(String cNum, ObservableEventTuple vacation) {
-//        if(!cNum.matches("[0-9]+") || cNum.length() != 16){ //not digits only
-//            Alert alert = new Alert(Alert.AlertType.WARNING, "Invalid credit card number. \n" +
-//                    "Please a valid credit card number with 16 digits and no dashes.\n" +
-//                    "Please try again.");
-//            alert.setHeaderText(null);
-//            alert.setTitle("Invalid credit card number");
-//            alert.showAndWait();
-//        }
-//        else{ //valid number
-//            myController.processTransaction(vacation, cNum, loggedInUser);
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION, "We will inform the seller that you are interested in buying this vacation. Should the seller approve the sale, your card will be charged and you will receive an email with your receipt.\n"
-//                    +"Enjoy your vacation!");
-//            alert.setHeaderText(null);
-//            alert.setTitle("Vacation Purchase Request Sent");
-//            alert.show();
-//        }
-//    }
-
 
     public void newEventClicked(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();
             BorderPane pane = loader.load(getClass().getResource("EventsCreateScene.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            EventsCreateScene vacationCreateScene = loader.getController();
-            vacationCreateScene.setController(myController);
-            vacationCreateScene.setLoggedInUser(loggedInUser);
-            vacationCreateScene.setAllCategories();
+            EventsCreateScene eventsCreateScene = loader.getController();
+            eventsCreateScene.setController(myController);
+            eventsCreateScene.setLoggedInUser(loggedInUser);
+            eventsCreateScene.setAllCategories();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-//    public void sellVacation(ActionEvent actionEvent) {
-//        if(!isConnected){
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please log in or create an account to buy and sell vacations.");
-//            alert.setHeaderText("You are not logged in");
-//            alert.setTitle("Not Logged In");
-//            alert.showAndWait();
-//        }
-//        else {
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-//                BorderPane pane = loader.load(getClass().getResource("EventsCreateScene.fxml").openStream());
-//                rootPane.getChildren().setAll(pane);
-//                EventsCreateScene vacationCreateScene = loader.getController();
-//                vacationCreateScene.setController(myController);
-//                vacationCreateScene.changeDateFormat();
-//                //give the selected user's info to the scene
-//                vacationCreateScene.setLoggdInUser(loggedInUser);
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
 
     public void search(){
         Set<String> chosenCategories = getChosenCategories();
@@ -263,27 +189,6 @@ public class MainEventsView implements IView {
             tbl_events.setItems(FXCollections.observableArrayList(eventTuples));
         }
     }
-
-//    public void search(){
-//        List<String> categories = new ArrayList<>();
-//        List<Map<String,String>> events = null;
-////        if (!txtfld_search.getText().equals("")){       //TODO: NEED TO GET CATEGORY INSTEAD OF DESTINATION FROM DROPDOWN MENU
-//////            destination = txtfld_search.getText();
-////            events = myController.searchEventByCategories(categories);
-////        }
-////        else {
-////            events = myController.readAllEvents();
-////        }
-////        String destination = txtfld_search.getText();
-////        List<Vacation> vacations = myController.searchVacattions(destination);
-//        List<ObservableEventTuple> eventTuples = new ArrayList<>();
-//        for (Map<String,String> event: events) {
-//            eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("repName"), event.get("organization")));
-//        }
-//        tbl_events.setItems(FXCollections.observableArrayList(eventTuples));
-//        //TODO search and populate table
-//    }
-
 
 
     private List<ObservableEventTuple> getEventsTuples(){
@@ -340,37 +245,6 @@ public class MainEventsView implements IView {
 
     }
 
-//
-
-
-//    private UserSearchScene openUserSearchScene() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            BorderPane pane = loader.load(getClass().getResource("UserSearchScene.fxml").openStream());
-//            rootPane.getChildren().setAll(pane);
-//            UserSearchScene UserSearchScene = loader.getController();
-//            UserSearchScene.setController(myController);
-//            return UserSearchScene;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
-
-//    public void openUserCreationScene(ActionEvent actionEvent) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-////            BorderPane pane = FXMLLoader.load(getClass().getResource("UserCreationScene.fxml"));
-//            BorderPane pane = loader.load(getClass().getResource("UserCreationScene.fxml").openStream());
-//            rootPane.getChildren().setAll(pane);
-//            UserCreationScene userCreationscene = loader.getController();
-//            userCreationscene.setController(myController);
-//            userCreationscene.changeDateFormat();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     public Boolean checkIfUserExists(String userName) {
         //
         return true;
@@ -384,19 +258,17 @@ public class MainEventsView implements IView {
         }
     }
 
-    public void buyVacation(ActionEvent actionEvent) {
+    public void addCategoriesToEvent(ActionEvent actionEvent) {
 
-        // If user clicked "Buy" without selecting a vacation
         if(tbl_events.getSelectionModel().getSelectedIndex() <= -1){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please select a vacation in order to buy one.");
-            alert.setHeaderText("Vacation not selected.");
-            alert.setTitle("Vacation not selected");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please select an event in update one.");
+            alert.setHeaderText("Event not selected.");
+            alert.setTitle("Event not selected.");
             alert.showAndWait();
         }
         else {
             // Send transaction request (pending transaction is added to DB)
             int eventID = Integer.parseInt(getSelectedEventFromTable().eventID.getValue());
-//            myaddTransactionToDatabase(vacationID);
 
             try {
                 FXMLLoader loader = new FXMLLoader();
