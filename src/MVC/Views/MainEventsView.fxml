@@ -33,10 +33,6 @@
                   <Font name="System Bold" size="28.0" />
                </font>
             </Label>
-            <Button fx:id="btn_home" mnemonicParsing="false" text="Home">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin></Button>
             <Label fx:id="login_create" alignment="CENTER" prefHeight="21.0" prefWidth="159.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -81,8 +77,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_addCategoryToEvent" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0"
-                    onAction="#buyVacation" text="Add Category To Event" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="btn_addCategoryToEvent" mnemonicParsing="false" onAction="#buyVacation" prefHeight="46.0" prefWidth="90.0" text="Add Category To Event" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
