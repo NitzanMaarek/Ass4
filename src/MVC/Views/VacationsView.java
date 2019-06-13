@@ -40,6 +40,8 @@ public class VacationsView implements IView {
     @FXML
     TableView<ObservableEventTuple> tbl_events;
     @FXML
+    TableColumn<ObservableEventTuple, String> clmn_id;
+    @FXML
     TableColumn<ObservableEventTuple, String> clmn_title;
     @FXML
     TableColumn<ObservableEventTuple, String> clmn_published_on;
@@ -90,6 +92,7 @@ public class VacationsView implements IView {
      */
     @FXML
     private void initialize(){
+        clmn_id.setCellValueFactory(cellData -> cellData.getValue().eventID);
         clmn_title.setCellValueFactory(cellData -> cellData.getValue().title);
         clmn_published_on.setCellValueFactory(cellData -> cellData.getValue().published_on);
         clmn_rep_user.setCellValueFactory(cellData -> cellData.getValue().rep_user);
@@ -401,5 +404,42 @@ public class VacationsView implements IView {
 //        }
 //    }
 
+
+    public void buyVacation(ActionEvent actionEvent) {
+
+        // If user clicked "Buy" without selecting a vacation
+        if(tbl_events.getSelectionModel().getSelectedIndex() <= -1){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please select a vacation in order to buy one.");
+            alert.setHeaderText("Vacation not selected.");
+            alert.setTitle("Vacation not selected");
+            alert.showAndWait();
+        }
+        else {
+            // Send transaction request (pending transaction is added to DB)
+            int eventID = Integer.parseInt(getSelectedEventFromTable().eventID.getValue());
+//            myaddTransactionToDatabase(vacationID);
+
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                BorderPane pane = loader.load(getClass().getResource("VacationBuyScene.fxml").openStream());
+                rootPane.getChildren().setAll(pane);
+                VacationBuyScene vacationBuyScene = loader.getController();
+                vacationBuyScene.setController(myController);
+                vacationBuyScene.setAllCategories();
+                vacationBuyScene.selectedEvent(eventID);
+                //give the selected user's info to the scene
+//                vacationBuyScene.setLoggedInLabel(loggedInUser.getUsername());
+//                vacationBuyScene.setLoggedInUser(loggedInUser);
+//                String value = getSelectedEventFromTable().eventID.toString();
+//                vacationBuyScene.setVacationIDBought(Integer.parseInt(getSelectedEventFromTable().eventID.getValue()));
+//                vacationBuyScene.setLbl_vacationInfo("Price: " + getSelectedEventFromTable().price.get() + " on " +
+//                        getSelectedEventFromTable().departure.get() + " to " + getSelectedVacationFromTable().destination.get());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
 
 }

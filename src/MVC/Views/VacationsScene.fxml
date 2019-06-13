@@ -59,7 +59,8 @@
             </HBox>
             <TableView fx:id="tbl_events" prefHeight="348.0" prefWidth="450.0">
               <columns>
-                <TableColumn fx:id="clmn_title" prefWidth="75.0" text="Title" />
+              <TableColumn fx:id="clmn_id" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="clmn_title" prefWidth="45.0" text="Title" />
                   <TableColumn fx:id="clmn_published_on" prefWidth="100.66663360595703" text="Published On" />
                   <TableColumn fx:id="clmn_rep_user" prefWidth="125.33329772949219" text="Representative User" />
                   <TableColumn fx:id="clmn_status" prefWidth="52.66668701171875" text="Status" />
@@ -77,7 +78,8 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_addCategoryToEvent" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" text="Add Category To Event" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="btn_addCategoryToEvent" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0"
+                    onAction="#buyVacation" text="Add Category To Event" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
