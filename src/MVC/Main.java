@@ -101,6 +101,8 @@ public class Main extends Application{
 
         IView crudView = loader.getController();
         crudView.setController(controller);
+        User user = new User("Fire Department user", new Organization("Fire Department"));
+        ((VacationsView) crudView).setLoggedInUser(user);
         ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
         ((VacationsView) crudView).setAllCategories();  //TODO: change class name VacationsView
         primaryStage.show();

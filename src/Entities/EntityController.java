@@ -5,7 +5,7 @@ public final class EntityController {
 
 
     private EntityController(){
-        System.out.println("MVC.EntityController.EntityController initialized - DELETE THIS MESSAGE");
+
     }
 
     public static EntityController getInstance(){

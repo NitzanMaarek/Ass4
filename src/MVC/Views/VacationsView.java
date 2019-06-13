@@ -1,6 +1,7 @@
 package MVC.Views;
 import Entities.Event;
 import Entities.Organization;
+import Entities.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -12,14 +13,15 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import MVC.Controller.Controller;
 
+import javax.jws.soap.SOAPBinding;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.*;
 
 public class VacationsView implements IView {
 
-    public Label login_create;
-    public Organization organization = new Organization("Fire Department");
+    public Label login_create ;
+
 
 
     @FXML
@@ -53,6 +55,10 @@ public class VacationsView implements IView {
 
     @FXML
     BorderPane rootPane;
+    public ChoiceBox user_chooser;
+    public Button login_btn;
+    public Organization organization;
+    User loggedInUser ;
 
 
     public void setAllEvents(){
@@ -95,10 +101,43 @@ public class VacationsView implements IView {
         clmn_rep_user.setCellValueFactory(cellData -> cellData.getValue().rep_user);
         clmn_status.setCellValueFactory(cellData -> cellData.getValue().status);
         clmn_organization.setCellValueFactory(cellData -> cellData.getValue().organization);
+
+        user_chooser.getItems().add("Fire Department user");
+        user_chooser.getItems().add("Police user");
+        user_chooser.getItems().add("Army user");
+
+
+
+    }
+
+    public void setLoggedInUser(Organization org) {
+
+        organization = new Organization(org.getName());
+        loggedInUser = new User(org.getName()+" user",organization);
+
+        setAllEvents();
+    }
+
+    public void setLoggedInUser(User usr){
+        loggedInUser = usr;
+        login_create.textProperty().bind(new SimpleStringProperty(loggedInUser.getName()));
+        setAllEvents();
     }
 
 
-//    public void home(ActionEvent actionEvent) {
+    public void onLoginClicked(){
+        String st =(String)user_chooser.getValue();
+
+        if (st!=null) {
+            st = st.replace(" user","");
+            organization = new Organization(st.replace(" user", ""));
+            loggedInUser = new User(st + " user", organization);
+            login_create.textProperty().bind(new SimpleStringProperty(loggedInUser.getName()));
+            setAllEvents();
+        }
+    }
+
+    //    public void home(ActionEvent actionEvent) {
 //        Alert alert = new Alert(Alert.AlertType.WARNING, "The home screen is not supported in this demo.");
 //        alert.setHeaderText("Not Supported");
 //        alert.setTitle("Not Supported");
@@ -168,6 +207,7 @@ public class VacationsView implements IView {
             rootPane.getChildren().setAll(pane);
             VacationCreateScene vacationCreateScene = loader.getController();
             vacationCreateScene.setController(myController);
+            vacationCreateScene.setLoggedInUser(loggedInUser);
             vacationCreateScene.setAllCategories();
         } catch (IOException e) {
             e.printStackTrace();
@@ -252,7 +292,7 @@ public class VacationsView implements IView {
         List<Map<String,String>> events = new ArrayList<>();
         for(Map<String,String> map : allEvents){
             String st = map.get("organization");
-            if(st.equals(this.organization.getName())){
+            if(st.equals(this.loggedInUser.getOrganization().getName())){
                 events.add(map);
             }
         }

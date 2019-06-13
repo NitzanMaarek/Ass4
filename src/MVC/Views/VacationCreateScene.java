@@ -1,5 +1,6 @@
 package MVC.Views;
 
+import Entities.User;
 import MVC.Controller.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,10 +25,15 @@ public class VacationCreateScene implements Initializable {
     public BorderPane rootPane;
 
     private Controller myController;
+    User loggedInUser ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         menubttn_associatedForces.getItems().addAll(new CheckMenuItem("Police"), new CheckMenuItem("Military"), new CheckMenuItem("Fire Dept."));
+    }
+
+    public void setLoggedInUser(User usr){
+        loggedInUser = usr;
     }
 
     public void setAllCategories(){
@@ -149,6 +155,8 @@ public class VacationCreateScene implements Initializable {
             event.put("categories",categories);
             String forces = stringSetToStringWithComma(chosenForces);
             event.put("forces", forces);
+            event.put("username",loggedInUser.getName());
+            event.put("organization", loggedInUser.getOrganization().getName());
     //        myController.addVacationToDataBase(vacationList);
             showEventAlert("Event created successfully!");
             myController.addEvent(event);
@@ -177,6 +185,7 @@ public class VacationCreateScene implements Initializable {
             rootPane.getChildren().setAll(pane);
             VacationsView vacationsView = loader.getController();
             vacationsView.setController(myController);
+            vacationsView.setLoggedInUser(loggedInUser);
             vacationsView.setAllEvents();
             vacationsView.setAllCategories();
         } catch (IOException e) {
