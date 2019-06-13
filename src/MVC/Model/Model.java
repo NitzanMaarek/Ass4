@@ -70,8 +70,8 @@ public class Model {
         for(int i=0; i<categories.length; i++){
             categoriesSet.add(new Category(categories[i]));
         }
-        Organization org = new Organization("Fire Department");
-        User user = new User("Fire Department user", org);
+        Organization org = new Organization(event.get("organization"));
+        User user = new User(event.get("username"), org);
         String title = event.get("title");
         Update update = new Update(event.get("update"));
         List<Update> updates = new ArrayList<>();
