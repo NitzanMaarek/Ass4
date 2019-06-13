@@ -76,7 +76,16 @@ public class VacationBuyScene{
         for(String category: categories){
             myController.insertEventsCateogiresConnections(this.selectedEventID, category);
         }
-
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            BorderPane pane = loader.load(getClass().getResource("VacationsScene.fxml").openStream());
+            rootPane.getChildren().setAll(pane);
+            VacationsView vacationsView = loader.getController();
+            vacationsView.setController(myController);
+            // add user and add events to view
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -97,57 +106,5 @@ public class VacationBuyScene{
             e.printStackTrace();
         }
     }
-//
-//    /**
-//     * Return to vacationsScene
-//     */
-//    public void goToVacationScene() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            BorderPane pane = loader.load(getClass().getResource("VacationsScene.fxml").openStream());
-//            rootPane.getChildren().setAll(pane);
-//            VacationsView vacationsView = loader.getController();
-//            vacationsView.setController(myController);
-//            vacationsView.setLoggedInUser(loggedInUser);
-//            vacationsView.setLoggedInLable(loggedInUser.getUsername());
-//            vacationsView.setAllVacations();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    /***
-//     * When user clicks the userName on top right corner you get transfered to UserReadScene
-//     */
-//    public void openLoginScene() {
-//        if (!isConnected) {
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-////                BorderPane pane = FXMLLoader.load(getClass().getResource("UserCreationScene.fxml"));
-//                BorderPane pane = loader.load(getClass().getResource("LoginView.fxml").openStream());
-//                rootPane.getChildren().setAll(pane);
-//                LoginView loginView = loader.getController();
-//                loginView.setController(myController);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-//                BorderPane pane = loader.load(getClass().getResource("UserReadScene.fxml").openStream());
-//                rootPane.getChildren().setAll(pane);
-//                UserReadScene userReadScene = loader.getController();
-//                userReadScene.setController(myController);
-//                //give the selected user's info to the scene
-//                userReadScene.setViewTextUserInfo(loggedInUser);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//    }
-
-
 }
 
