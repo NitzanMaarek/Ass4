@@ -1,6 +1,7 @@
 package MVC;
 
 //import MVC.Users.MainEventsView;
+import Entities.Category;
 import Entities.Organization;
 import Entities.User;
 import MVC.Controller.Controller;

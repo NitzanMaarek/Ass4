@@ -28,8 +28,6 @@ public class AddCategoryToEventScene {
 
     public void setAllCategories(){
         List<String> categories = myController.getAllCategories();
-        //TODO Remove bottom line and use the one above - test it.
-//        List<String> categories = new ArrayList<>(Arrays.asList("Urgent", "Critical", "Normal"));
         for(String category : categories){
             CheckMenuItem itemToAdd = new CheckMenuItem(category);
             menubttn_categories.getItems().add(itemToAdd);
