@@ -60,7 +60,7 @@ public class VacationsView implements IView {
     public ChoiceBox user_chooser;
     public Button login_btn;
     public Organization organization;
-    User loggedInUser ;
+    public User loggedInUser ;
 
 
     public void setAllEvents(){
@@ -466,6 +466,7 @@ public class VacationsView implements IView {
                 VacationBuyScene vacationBuyScene = loader.getController();
                 vacationBuyScene.setController(myController);
                 vacationBuyScene.setAllCategories();
+                vacationBuyScene.setLoggedInUser(loggedInUser);
                 vacationBuyScene.selectedEvent(eventID);
                 //give the selected user's info to the scene
 //                vacationBuyScene.setLoggedInLabel(loggedInUser.getUsername());

@@ -4,6 +4,7 @@ import Entities.User;
 import Entities.User;
 import MVC.Controller.Controller;
 import MVC.Model.Model;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +19,6 @@ import java.util.List;
 public class VacationBuyScene{
 
     public boolean isConnected = false;
-    private User loggedInUser = null;
     public Controller myController;
     private int selectedEventID;
     public MenuButton menubttn_categories = new MenuButton();
@@ -29,6 +29,7 @@ public class VacationBuyScene{
     public Label lbl_currentUser;
     public Button btn_back;
     public Button btn_add;
+    public User loggedInUser ;
 
     public void setAllCategories(){
         List<String> categories = myController.getAllCategories();
@@ -41,15 +42,15 @@ public class VacationBuyScene{
     }
 
 
+
     public void setController(Controller aController){
         if(aController != null){
             this.myController = aController;
         }
     }
 
-    public void setLoggedInLabel(String username) {
-        isConnected = true;
-        lbl_currentUser.setText(username);
+    public void setLoggedInLabel(User user) {
+        loggedInUser=user;
     }
 
     public void setLoggedInUser(User loggedInUser){
@@ -82,6 +83,9 @@ public class VacationBuyScene{
             rootPane.getChildren().setAll(pane);
             VacationsView vacationsView = loader.getController();
             vacationsView.setController(myController);
+            vacationsView.setLoggedInUser(loggedInUser);
+            vacationsView.setAllCategories();
+
             // add user and add events to view
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,6 +103,8 @@ public class VacationBuyScene{
             rootPane.getChildren().setAll(pane);
             VacationsView vacationsView = loader.getController();
             vacationsView.setController(myController);
+            vacationsView.setLoggedInUser(loggedInUser);
+            vacationsView.setAllCategories();
 //            vacationsView.setLoggedInUser(loggedInUser);
 //            vacationsView.setLoggedInLable(loggedInUser.getUsername());
 //            vacationsView.setAllVacations();
