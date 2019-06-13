@@ -24,7 +24,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception{
 
         Model model = new Model();
-
+//
 //        Category category = new Category("Fire");
 //        Category category1 = new Category("Terror Attack");
 //        Category category2 = new Category("Robbery");
