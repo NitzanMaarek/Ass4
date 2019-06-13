@@ -36,8 +36,7 @@ public class Main extends Application{
 //        model.insertCategory(category1);
 //        model.insertCategory(category2);
 //        model.insertCategory(category3);
-//
-//
+
 //        List<String> catList = model.readAllCategories();
 //        System.out.println("CATEGOREIS");
 //        for (String cat : catList){

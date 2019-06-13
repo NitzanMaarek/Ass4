@@ -40,6 +40,7 @@ public class Event {
 
     public void addCategory(Category category){
         this.categories.add(category);
+//        category.addEvent(this);
     }
 
     public void getUpdates(){

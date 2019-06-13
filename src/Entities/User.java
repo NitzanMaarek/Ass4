@@ -1,5 +1,7 @@
 package Entities;
 
+import Database.Database;
+
 public class User {
 
     private String name;
@@ -60,6 +62,7 @@ public class User {
 
     public void changePassword(String password){
         this.password = password;
+        // Need to change password in the server
     }
 
     public void setAsRepresentative(){

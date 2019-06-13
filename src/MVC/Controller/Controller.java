@@ -33,4 +33,7 @@ public class Controller {
     public List<String> getCategoriesByEventID(int id){
         return myModel.readEventsCateogiresConnectionsByID(id);
     }
+
+    public void insertEventsCateogiresConnections(int id , String category){
+        myModel.insertEventsCateogiresConnections(id, category);}
 }
