@@ -1,13 +1,11 @@
 package MVC;
 
-//import MVC.Users.VacationsView;
-import Entities.Category;
-import Entities.Event;
+//import MVC.Users.MainEventsView;
 import Entities.Organization;
 import Entities.User;
 import MVC.Controller.Controller;
 import MVC.Views.IView;
-import MVC.Views.VacationsView;
+import MVC.Views.MainEventsView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +14,6 @@ import javafx.stage.Stage;
 import MVC.Model.Model;
 //import MVC.Users.IView;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.*;
 
 public class Main extends Application{
@@ -83,7 +80,7 @@ public class Main extends Application{
 
         FXMLLoader loader = new FXMLLoader();
 
-        Parent root = loader.load(Main.class.getResourceAsStream("Views/VacationsScene.fxml"));
+        Parent root = loader.load(Main.class.getResourceAsStream("Views/MainEventsView.fxml"));
         System.out.println(Main.class.getResource("Style.css").toString());
         root.getStylesheets().add(Main.class.getResource("Style.css").toString());
         primaryStage.setTitle("Event4U");
@@ -101,9 +98,9 @@ public class Main extends Application{
         IView crudView = loader.getController();
         crudView.setController(controller);
         User user = new User("Fire Department user", new Organization("Fire Department"));
-        ((VacationsView) crudView).setLoggedInUser(user);
-        ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
-        ((VacationsView) crudView).setAllCategories();  //TODO: change class name VacationsView
+        ((MainEventsView) crudView).setLoggedInUser(user);
+        ((MainEventsView) crudView).setAllEvents();  //TODO: change class name MainEventsView
+        ((MainEventsView) crudView).setAllCategories();  //TODO: change class name MainEventsView
         primaryStage.show();
 
     }

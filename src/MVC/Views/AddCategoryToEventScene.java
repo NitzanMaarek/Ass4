@@ -1,13 +1,8 @@
 package MVC.Views;
 
 import Entities.User;
-import Entities.User;
 import MVC.Controller.Controller;
-import MVC.Model.Model;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -16,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VacationBuyScene{
+public class AddCategoryToEventScene {
 
     public boolean isConnected = false;
     public Controller myController;
@@ -79,9 +74,9 @@ public class VacationBuyScene{
         }
         try {
             FXMLLoader loader = new FXMLLoader();
-            BorderPane pane = loader.load(getClass().getResource("VacationsScene.fxml").openStream());
+            BorderPane pane = loader.load(getClass().getResource("MainEventsView.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            VacationsView vacationsView = loader.getController();
+            MainEventsView vacationsView = loader.getController();
             vacationsView.setController(myController);
             vacationsView.setLoggedInUser(loggedInUser);
             vacationsView.setAllCategories();
@@ -99,9 +94,9 @@ public class VacationBuyScene{
     public void back(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            BorderPane pane = loader.load(getClass().getResource("VacationsScene.fxml").openStream());
+            BorderPane pane = loader.load(getClass().getResource("MainEventsView.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            VacationsView vacationsView = loader.getController();
+            MainEventsView vacationsView = loader.getController();
             vacationsView.setController(myController);
             vacationsView.setLoggedInUser(loggedInUser);
             vacationsView.setAllCategories();

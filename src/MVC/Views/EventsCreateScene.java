@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.*;;
 
 
-public class VacationCreateScene implements Initializable {
+public class EventsCreateScene implements Initializable {
 
 
     public TextField txtfld_title;
@@ -181,9 +181,9 @@ public class VacationCreateScene implements Initializable {
     public void openEventsView() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            BorderPane pane = loader.load(getClass().getResource("VacationsScene.fxml").openStream());
+            BorderPane pane = loader.load(getClass().getResource("MainEventsView.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            VacationsView vacationsView = loader.getController();
+            MainEventsView vacationsView = loader.getController();
             vacationsView.setController(myController);
             vacationsView.setLoggedInUser(loggedInUser);
             vacationsView.setAllEvents();

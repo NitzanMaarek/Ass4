@@ -1,11 +1,9 @@
 package MVC.Views;
-import Entities.Event;
 import Entities.Organization;
 import Entities.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +11,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import MVC.Controller.Controller;
 
-import javax.jws.soap.SOAPBinding;
-import javax.swing.*;
 import java.io.IOException;
 import java.util.*;
 
-public class VacationsView implements IView {
+public class MainEventsView implements IView {
 
     public Label login_create ;
 
@@ -160,9 +156,9 @@ public class VacationsView implements IView {
         }
 //            try {
 //                FXMLLoader loader = new FXMLLoader();
-////                BorderPane pane = loader.load(getClass().getResource("VacationBuyScene.fxml").openStream());
+////                BorderPane pane = loader.load(getClass().getResource("AddCategoryToEventScene.fxml").openStream());
 ////                rootPane.getChildren().setAll(pane);
-////                VacationBuyScene vacationBuyScene = loader.getController();
+////                AddCategoryToEventScene vacationBuyScene = loader.getController();
 ////                vacationBuyScene.setController(myController);
 ////                //give the selected user's info to the scene
 ////                vacationBuyScene.setLoggedInLabel(loggedInUser.getUsername());
@@ -206,9 +202,9 @@ public class VacationsView implements IView {
     public void newEventClicked(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            BorderPane pane = loader.load(getClass().getResource("VacationCreateScene.fxml").openStream());
+            BorderPane pane = loader.load(getClass().getResource("EventsCreateScene.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            VacationCreateScene vacationCreateScene = loader.getController();
+            EventsCreateScene vacationCreateScene = loader.getController();
             vacationCreateScene.setController(myController);
             vacationCreateScene.setLoggedInUser(loggedInUser);
             vacationCreateScene.setAllCategories();
@@ -227,9 +223,9 @@ public class VacationsView implements IView {
 //        else {
 //            try {
 //                FXMLLoader loader = new FXMLLoader();
-//                BorderPane pane = loader.load(getClass().getResource("VacationCreateScene.fxml").openStream());
+//                BorderPane pane = loader.load(getClass().getResource("EventsCreateScene.fxml").openStream());
 //                rootPane.getChildren().setAll(pane);
-//                VacationCreateScene vacationCreateScene = loader.getController();
+//                EventsCreateScene vacationCreateScene = loader.getController();
 //                vacationCreateScene.setController(myController);
 //                vacationCreateScene.changeDateFormat();
 //                //give the selected user's info to the scene
@@ -388,63 +384,6 @@ public class VacationsView implements IView {
         }
     }
 
-//    public void setLoggedInLable(String username) {
-//        isConnected = true;
-//        login_create.setText(username);
-//    }
-//
-//    public void setLoggedInUser(AUser loggedInUser){
-//        this.loggedInUser=loggedInUser;
-//    }
-//
-//    public void openUserSearchWithRead(ActionEvent actionEvent) {
-//        openUserSearchScene().setReadEnabled(true);
-//    }
-//
-//    public void openUserSearchWithUpdate(ActionEvent actionEvent) {
-//        UserSearchScene userSearchScene = openUserSearchScene();
-//        userSearchScene.setReadEnabled(true);
-//        userSearchScene.setUpdateEnabled(true);
-//    }
-//
-//    public void openUserSearchWithDelete(ActionEvent actionEvent) {
-//        UserSearchScene userSearchScene = openUserSearchScene();
-//        userSearchScene.setReadEnabled(true);
-//        userSearchScene.setDeleteEnabled(true);
-//    }
-//
-
-//    public void openLoginScene() {
-//        if (!isConnected) {
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-////                BorderPane pane = FXMLLoader.load(getClass().getResource("UserCreationScene.fxml"));
-//                BorderPane pane = loader.load(getClass().getResource("LoginView.fxml").openStream());
-//                rootPane.getChildren().setAll(pane);
-//                LoginView loginView = loader.getController();
-//                loginView.setController(myController);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//
-//            try {
-//                FXMLLoader loader = new FXMLLoader();
-//                BorderPane pane = loader.load(getClass().getResource("UserReadScene.fxml").openStream());
-//                rootPane.getChildren().setAll(pane);
-//                UserReadScene userReadScene = loader.getController();
-//                userReadScene.setController(myController);
-//                //give the selected user's info to the scene
-//                userReadScene.setViewTextUserInfo(loggedInUser);
-//                userReadScene.setTables();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-//    }
-
-
     public void buyVacation(ActionEvent actionEvent) {
 
         // If user clicked "Buy" without selecting a vacation
@@ -461,21 +400,13 @@ public class VacationsView implements IView {
 
             try {
                 FXMLLoader loader = new FXMLLoader();
-                BorderPane pane = loader.load(getClass().getResource("VacationBuyScene.fxml").openStream());
+                BorderPane pane = loader.load(getClass().getResource("AddCategoryToEventScene.fxml").openStream());
                 rootPane.getChildren().setAll(pane);
-                VacationBuyScene vacationBuyScene = loader.getController();
-                vacationBuyScene.setController(myController);
-                vacationBuyScene.setAllCategories();
-                vacationBuyScene.setLoggedInUser(loggedInUser);
-                vacationBuyScene.selectedEvent(eventID);
-                //give the selected user's info to the scene
-//                vacationBuyScene.setLoggedInLabel(loggedInUser.getUsername());
-//                vacationBuyScene.setLoggedInUser(loggedInUser);
-//                String value = getSelectedEventFromTable().eventID.toString();
-//                vacationBuyScene.setVacationIDBought(Integer.parseInt(getSelectedEventFromTable().eventID.getValue()));
-//                vacationBuyScene.setLbl_vacationInfo("Price: " + getSelectedEventFromTable().price.get() + " on " +
-//                        getSelectedEventFromTable().departure.get() + " to " + getSelectedVacationFromTable().destination.get());
-
+                AddCategoryToEventScene addCategoryToEvent = loader.getController();
+                addCategoryToEvent.setController(myController);
+                addCategoryToEvent.setAllCategories();
+                addCategoryToEvent.setLoggedInUser(loggedInUser);
+                addCategoryToEvent.selectedEvent(eventID);
             } catch (IOException e) {
                 e.printStackTrace();
             }
