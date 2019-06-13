@@ -70,15 +70,15 @@ public class Model {
     }
 
     public void addEvent(Map<String, String> event) {
-        String[] categories = event.get("categories").split(",");
-        Set<Category> categoriesSet = new HashSet<>();
-        for(int i=0; i<categories.length; i++){
-            categoriesSet.add(new Category(categories[i]));
-        }
-        Organization org = new Organization("Fire Department");
-        User user = new User("ESO", org);
-        String title = event.get("title");
-        Event eventToAdd = new Event(title, user, org, categoriesSet);
-        insertEvent(eventToAdd);
+//        String[] categories = event.get("categories").split(",");
+//        Set<Category> categoriesSet = new HashSet<>();
+//        for(int i=0; i<categories.length; i++){
+//            categoriesSet.add(new Category(categories[i]));
+//        }
+//        Organization org = new Organization("Fire Department");
+//        User user = new User("ESO", org);
+//        String title = event.get("title");
+//        Event eventToAdd = new Event(title, user, org, categoriesSet);
+//        insertEvent(eventToAdd);
     }
 }

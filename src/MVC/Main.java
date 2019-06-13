@@ -39,7 +39,7 @@ public class Main extends Application{
         for (String cat : catList){
             System.out.print(cat+",");
         }
-        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println("\n--------------------------------------------------------------------------------");
         Set<Category> a = new HashSet<>();
         a.add(category1);
         Organization organization = new Organization("nitzan Police");
@@ -59,7 +59,7 @@ public class Main extends Application{
             }
             System.out.println();
         }
-        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("\n---------------------------------------------------------------------------------------");
 
         List<String> categoriesByID = model.readEventsCateogiresConnectionsByID(2);
 

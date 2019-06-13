@@ -19,7 +19,7 @@ public class Event {
         this.rep= rep;
         this.organization = organization;
         this.datePublished = new Date().toString();
-        status="Active";
+        this.status="Active";
 
         if(categories!=null){
             this.categories.addAll(categories);
