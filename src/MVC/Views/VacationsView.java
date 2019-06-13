@@ -1,5 +1,6 @@
 package MVC.Views;
 import Entities.Event;
+import Entities.Organization;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -18,6 +19,8 @@ import java.util.*;
 public class VacationsView implements IView {
 
     public Label login_create;
+    public Organization organization = new Organization("Fire Department");
+
 
     @FXML
     Button btn_home;
@@ -197,14 +200,23 @@ public class VacationsView implements IView {
 
     public void search(){
         Set<String> chosenCategories = getChosenCategories();
-        List<Map<String,String>> eventsMap;
+        List<Map<String,String>> allEventsMap;
         if(chosenCategories.size() == 0){
             setAllEvents();
         }
         else{
-            eventsMap = myController.readAllEvents();
-            //TODO need to get all events from eventsCategoriesConnections DB.
-            //TODO: After that - show in table only events with same categories in chosenCategories.
+            allEventsMap = myController.readAllEvents();
+            List<Map<String,String>> eventsMap= new ArrayList<>();
+            for (Map<String,String> map : allEventsMap ) {
+                boolean hasCaterogy = false;
+                List<String> eventsCategoriy = myController.getCategoriesByEventID(Integer.parseInt(map.get("id")));
+                for(String cat : eventsCategoriy){
+                    if(chosenCategories.contains(cat) && !hasCaterogy){
+                        hasCaterogy=true;
+                        eventsMap.add(map);
+                    }
+                }
+            }
             List<ObservableEventTuple> eventTuples = new ArrayList<>();
             for (Map<String,String> event: eventsMap) {
                 eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("status"), event.get("organization"), event.get("id")));
@@ -236,7 +248,15 @@ public class VacationsView implements IView {
 
 
     private List<ObservableEventTuple> getEventsTuples(){
-        List<Map<String,String>> events = myController.readAllEvents();
+        List<Map<String,String>> allEvents = myController.readAllEvents();
+        List<Map<String,String>> events = new ArrayList<>();
+        for(Map<String,String> map : allEvents){
+            String st = map.get("organization");
+            if(st.equals(this.organization.getName())){
+                events.add(map);
+            }
+        }
+
         List<ObservableEventTuple> eventTuples = new ArrayList<>();
         for (Map<String,String> event: events) {
             eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("status"), event.get("organization"), event.get("id")));

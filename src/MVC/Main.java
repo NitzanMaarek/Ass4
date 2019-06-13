@@ -27,53 +27,57 @@ public class Main extends Application{
 
         Model model = new Model();
 
-        Category category = new Category("凸(艹皿艹 )");
-        Category category1 = new Category("凸(艹皿艹 )凸(艹皿艹 )");
-
-        model.insertCategory(category);
-        model.insertCategory(category1);
-
-
-        List<String> catList = model.readAllCategories();
-        System.out.println("CATEGOREIS");
-        for (String cat : catList){
-            System.out.print(cat+",");
-        }
-        System.out.println("\n--------------------------------------------------------------------------------");
-        Set<Category> a = new HashSet<>();
-        a.add(category1);
-        Organization organization = new Organization("nitzan Police");
-        Organization organization2 = new Organization("nitzan2 Police");
-        User user = new User("Nitzan",0,"nitzan@nitzan.com","123456",organization);
-        User user2 = new User("Nitzan2",0,"nitzan2@nitzan.com","123456",organization);
-        Event event = new Event("NitzanEvent" , user, organization, null , null);
-        Event event2 = new Event("NitzanEvent" , user2, organization2, a , null);
-        model.insertEvent(event);
-        model.insertEvent(event2);
-
-        List<Map<String,String>> mapList = model.readAllEvents();
-        System.out.println("EVENTS");
-        for (Map<String,String>  e: mapList ) {
-            for (String key : e.keySet() ) {
-                System.out.print(e.get(key)+",");
-            }
-            System.out.println();
-        }
-        System.out.println("\n---------------------------------------------------------------------------------------");
-
-        List<String> categoriesByID = model.readEventsCateogiresConnectionsByID(2);
-
-        List<String> categoriesByID2 = model.readEventsCateogiresConnectionsByID(1);
-
-        System.out.println("CATEGORIES BY ID");
-        for (String cat:categoriesByID ) {
-            System.out.println(cat+",");
-        }
-
-        for (String cat:categoriesByID2 ) {
-            System.out.println(cat+",");
-        }
-        System.out.println("---------------------------------------------------------------------------------------");
+//        Category category = new Category("Fire");
+//        Category category1 = new Category("Terror Attack");
+//        Category category2 = new Category("Robbery");
+//        Category category3 = new Category("Car Accident");
+//
+//        model.insertCategory(category);
+//        model.insertCategory(category1);
+//        model.insertCategory(category2);
+//        model.insertCategory(category3);
+//
+//
+//        List<String> catList = model.readAllCategories();
+//        System.out.println("CATEGOREIS");
+//        for (String cat : catList){
+//            System.out.print(cat+",");
+//        }
+//        System.out.println("\n--------------------------------------------------------------------------------");
+//        Set<Category> a = new HashSet<>();
+//        a.add(category1);
+//        Organization organization = new Organization("nitzan Police");
+//        Organization organization2 = new Organization("nitzan2 Police");
+//        User user = new User("Nitzan",0,"nitzan@nitzan.com","123456",organization);
+//        User user2 = new User("Nitzan2",0,"nitzan2@nitzan.com","123456",organization);
+//        Event event = new Event("NitzanEvent" , user, organization, null , null);
+//        Event event2 = new Event("NitzanEvent" , user2, organization2, a , null);
+//        model.insertEvent(event);
+//        model.insertEvent(event2);
+//
+//        List<Map<String,String>> mapList = model.readAllEvents();
+//        System.out.println("EVENTS");
+//        for (Map<String,String>  e: mapList ) {
+//            for (String key : e.keySet() ) {
+//                System.out.print(e.get(key)+",");
+//            }
+//            System.out.println();
+//        }
+//        System.out.println("\n---------------------------------------------------------------------------------------");
+//
+//        List<String> categoriesByID = model.readEventsCateogiresConnectionsByID(2);
+//
+//        List<String> categoriesByID2 = model.readEventsCateogiresConnectionsByID(1);
+//
+//        System.out.println("CATEGORIES BY ID");
+//        for (String cat:categoriesByID ) {
+//            System.out.println(cat+",");
+//        }
+//
+//        for (String cat:categoriesByID2 ) {
+//            System.out.println(cat+",");
+//        }
+//        System.out.println("---------------------------------------------------------------------------------------");
 
 
         Controller controller = new Controller(model);

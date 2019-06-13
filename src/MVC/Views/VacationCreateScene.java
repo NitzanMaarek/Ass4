@@ -178,6 +178,7 @@ public class VacationCreateScene implements Initializable {
             VacationsView vacationsView = loader.getController();
             vacationsView.setController(myController);
             vacationsView.setAllEvents();
+            vacationsView.setAllCategories();
         } catch (IOException e) {
             e.printStackTrace();
         }

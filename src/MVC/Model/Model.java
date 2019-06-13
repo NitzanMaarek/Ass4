@@ -71,7 +71,7 @@ public class Model {
             categoriesSet.add(new Category(categories[i]));
         }
         Organization org = new Organization("Fire Department");
-        User user = new User("ESO", org);
+        User user = new User("Fire Department user", org);
         String title = event.get("title");
         Update update = new Update(event.get("update"));
         List<Update> updates = new ArrayList<>();
