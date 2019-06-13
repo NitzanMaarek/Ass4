@@ -28,7 +28,7 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Button>
-            <Label text="Purchase Window" underline="true" GridPane.columnIndex="1">
+            <Label text="Add Category" underline="true" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
