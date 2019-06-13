@@ -23,7 +23,7 @@ public class Controller {
     }
 
     public List<String> getAllCategories() {
-        return null;
+        return myModel.readAllCategories();
     }
 
     public void addEvent(Map<String, String> event) {

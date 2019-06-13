@@ -76,30 +76,30 @@ public class Main extends Application{
         System.out.println("---------------------------------------------------------------------------------------");
 
 
-//        Controller controller = new Controller(model);
-//
-//        FXMLLoader loader = new FXMLLoader();
-//
-//        Parent root = loader.load(Main.class.getResourceAsStream("Views/VacationsScene.fxml"));
-//        System.out.println(Main.class.getResource("Style.css").toString());
-//        root.getStylesheets().add(Main.class.getResource("Style.css").toString());
-//        primaryStage.setTitle("Event4U");
-//        primaryStage.setScene(new Scene(root, 550, 400));
-//
-//        primaryStage.setMinHeight(480);
-//        primaryStage.setMinWidth(580);
-//
-//        primaryStage.setMaxHeight(480);
-//        primaryStage.setMaxWidth(580);
-//
-//
-//        Locale.setDefault(Locale.ENGLISH);  //also import
-//
-//        IView crudView = loader.getController();
-//        crudView.setController(controller);
-//        ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
-//        ((VacationsView) crudView).setAllCategories();  //TODO: change class name VacationsView
-//        primaryStage.show();
+        Controller controller = new Controller(model);
+
+        FXMLLoader loader = new FXMLLoader();
+
+        Parent root = loader.load(Main.class.getResourceAsStream("Views/VacationsScene.fxml"));
+        System.out.println(Main.class.getResource("Style.css").toString());
+        root.getStylesheets().add(Main.class.getResource("Style.css").toString());
+        primaryStage.setTitle("Event4U");
+        primaryStage.setScene(new Scene(root, 550, 400));
+
+        primaryStage.setMinHeight(480);
+        primaryStage.setMinWidth(580);
+
+        primaryStage.setMaxHeight(480);
+        primaryStage.setMaxWidth(580);
+
+
+        Locale.setDefault(Locale.ENGLISH);  //also import
+
+        IView crudView = loader.getController();
+        crudView.setController(controller);
+        ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
+        ((VacationsView) crudView).setAllCategories();  //TODO: change class name VacationsView
+        primaryStage.show();
 
     }
 

@@ -165,10 +165,7 @@ public class VacationsView implements IView {
             rootPane.getChildren().setAll(pane);
             VacationCreateScene vacationCreateScene = loader.getController();
             vacationCreateScene.setController(myController);
-//            vacationCreateScene.changeDateFormat();
-            //give the selected user's info to the scene
-//            vacationCreateScene.setLoggdInUser(loggedInUser);
-
+            vacationCreateScene.setAllCategories();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -206,6 +203,8 @@ public class VacationsView implements IView {
         }
         else{
             eventsMap = myController.readAllEvents();
+            //TODO need to get all events from eventsCategoriesConnections DB.
+            //TODO: After that - show in table only events with same categories in chosenCategories.
             List<ObservableEventTuple> eventTuples = new ArrayList<>();
             for (Map<String,String> event: eventsMap) {
                 eventTuples.add(new ObservableEventTuple(event.get("title"), event.get("datePublished"), event.get("repName"), event.get("status"), event.get("organization"), event.get("id")));

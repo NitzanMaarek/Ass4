@@ -28,10 +28,9 @@ public class VacationCreateScene implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         menubttn_associatedForces.getItems().addAll(new CheckMenuItem("Police"), new CheckMenuItem("Military"), new CheckMenuItem("Fire Dept."));
-        setAllCategories();
     }
 
-    private void setAllCategories(){
+    public void setAllCategories(){
         List<String> categories = myController.getAllCategories();
         //TODO Remove bottom line and use the one above - test it.
 //        List<String> categories = new ArrayList<>(Arrays.asList("Urgent", "Critical", "Normal"));
