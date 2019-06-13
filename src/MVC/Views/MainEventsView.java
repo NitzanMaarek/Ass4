@@ -276,9 +276,9 @@ public class MainEventsView implements IView {
                 rootPane.getChildren().setAll(pane);
                 AddCategoryToEventScene addCategoryToEvent = loader.getController();
                 addCategoryToEvent.setController(myController);
+                addCategoryToEvent.selectedEvent(eventID);
                 addCategoryToEvent.setAllCategories();
                 addCategoryToEvent.setLoggedInUser(loggedInUser);
-                addCategoryToEvent.selectedEvent(eventID);
             } catch (IOException e) {
                 e.printStackTrace();
             }
