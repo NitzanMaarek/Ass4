@@ -174,6 +174,11 @@ public class MainEventsView implements IView {
             List<Map<String,String>> eventsMap= new ArrayList<>();
             for (Map<String,String> map : allEventsMap ) {
                 boolean hasCaterogy = false;
+                String st = map.get("organization");
+                System.out.println(this.loggedInUser.getOrganization().getName());
+                if (!(st.equals((this.loggedInUser.getOrganization().getName())))){
+                    continue;
+                }
                 List<String> eventsCategoriy = myController.getCategoriesByEventID(Integer.parseInt(map.get("id")));
                 for(String cat : eventsCategoriy){
                     if(chosenCategories.contains(cat) && !hasCaterogy){
