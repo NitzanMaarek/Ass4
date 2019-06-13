@@ -35,9 +35,9 @@ public class AddCategoryToEventScene {
         }
 
         List<String> eventsCategories = myController.getCategoriesByEventID(this.selectedEventID);
-
         for(MenuItem menuItem: menubttn_categories.getItems()){
-        CheckMenuItem checkMenuItem = (CheckMenuItem)menuItem;
+            CheckMenuItem checkMenuItem = (CheckMenuItem)menuItem;
+            checkMenuItem.setSelected(false);
             if(eventsCategories.contains(checkMenuItem.getText())){
                 checkMenuItem.setSelected(true);
             }
