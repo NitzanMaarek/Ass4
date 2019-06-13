@@ -98,7 +98,6 @@ public class EventsCreateScene implements Initializable {
 
     }
 
-
     private List<String> getChosenForces(){
         List<String> chosenForces = new ArrayList<>();
         for(MenuItem menuItem: menubttn_associatedForces.getItems()){

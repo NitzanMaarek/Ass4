@@ -2,6 +2,7 @@ package MVC.Views;
 
 import Entities.User;
 import MVC.Controller.Controller;
+import MVC.Model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -33,6 +34,15 @@ public class AddCategoryToEventScene {
         for(String category : categories){
             CheckMenuItem itemToAdd = new CheckMenuItem(category);
             menubttn_categories.getItems().add(itemToAdd);
+        }
+
+        List<String> eventsCategories = myController.getCategoriesByEventID(this.selectedEventID);
+
+        for(MenuItem menuItem: menubttn_categories.getItems()){
+        CheckMenuItem checkMenuItem = (CheckMenuItem)menuItem;
+            if(eventsCategories.contains(checkMenuItem.getText())){
+                checkMenuItem.setSelected(true);
+            }
         }
     }
 
