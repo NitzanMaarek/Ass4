@@ -70,8 +70,8 @@ public class Model {
         for(int i=0; i<categories.length; i++){
             categoriesSet.add(new Category(categories[i]));
         }
-        Organization org = new Organization("Fire Department");
-        User user = new User("ESO", org);
+        Organization org = new Organization(event.get("organization"));
+        User user = new User(event.get("username"), org);
         String title = event.get("title");
         Update update = new Update(event.get("update"));
         List<Update> updates = new ArrayList<>();
@@ -79,4 +79,45 @@ public class Model {
         Event eventToAdd = new Event(title, user, org, categoriesSet, updates);
         insertEvent(eventToAdd);
     }
+
+    public void createNewUser(){
+System.out.println("Implement me");
+    }
+    public void fileComplaint(){
+        System.out.println("Implement me");
+    }
+    public void sendNotice(){
+        System.out.println("Implement me");
+    }
+    public void giveFeedback(){
+        System.out.println("Implement me");
+    }
+    public void sendGrades(){
+        System.out.println("Implement me");
+    }
+    public void displayAccountSettings(){
+        System.out.println("Implement me");
+    }
+    public void changePassword(){
+        System.out.println("Implement me");
+    }
+    public void createEvent(){
+        System.out.println("Implement me");
+    }
+    public void addEventUpdate(){
+        System.out.println("Implement me");
+    }
+    public void chooseUser(){
+        System.out.println("Implement me");
+    }
+    public void displayCategories(){
+        System.out.println("Implement me");
+    }
+    public void displayEvenets(){
+        System.out.println("Implement me");
+    }
+    public void displayPreviousEventUpdates(){
+        System.out.println("Implement me");
+    }
+
 }

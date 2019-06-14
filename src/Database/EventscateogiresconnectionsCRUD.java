@@ -20,11 +20,11 @@ public class EventscateogiresconnectionsCRUD {
     public void insertEventsCateogiresConnections(int id, String category) {
 
         Connection conn = db.getConn();
-        String sqlInsert = "INSERT INTO eventscateogiresconnections(event_id,category_name ) VALUES(?,?)";
+        String sqlInsert = "INSERT INTO eventscateogiresconnections (event_id,category_name ) VALUES(?,?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sqlInsert)) {
             pstmt.setInt(1, id);
             pstmt.setString(2, category);
-            pstmt.executeQuery();
+            pstmt.executeUpdate();
         } catch (SQLException E) {
             System.out.println(E.getMessage());
         }
@@ -37,8 +37,8 @@ public class EventscateogiresconnectionsCRUD {
         Connection conn = db.getConn();
 
         String sql = "SELECT category_name " +
-                "FROM eventscateogiresconnections" +
-                "WHERE event_id =(?)";
+                " FROM eventscateogiresconnections" +
+                " WHERE event_id = ? ";
         try (PreparedStatement pstm = conn.prepareStatement(sql)) {
             pstm.setInt(1, eventId);
             ResultSet rs = pstm.executeQuery();
@@ -48,6 +48,7 @@ public class EventscateogiresconnectionsCRUD {
                 toReturn.add(tmp);
             }
         } catch (SQLException e) {
+
             e.printStackTrace();
         }
         db.closeConnection();

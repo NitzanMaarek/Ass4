@@ -1,5 +1,6 @@
 package MVC.Views;
 
+import Entities.User;
 import MVC.Controller.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import java.net.URL;
 import java.util.*;;
 
 
-public class VacationCreateScene implements Initializable {
+public class EventsCreateScene implements Initializable {
 
 
     public TextField txtfld_title;
@@ -24,10 +25,15 @@ public class VacationCreateScene implements Initializable {
     public BorderPane rootPane;
 
     private Controller myController;
+    User loggedInUser ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         menubttn_associatedForces.getItems().addAll(new CheckMenuItem("Police"), new CheckMenuItem("Military"), new CheckMenuItem("Fire Dept."));
+    }
+
+    public void setLoggedInUser(User usr){
+        loggedInUser = usr;
     }
 
     public void setAllCategories(){
@@ -92,7 +98,6 @@ public class VacationCreateScene implements Initializable {
 
     }
 
-
     private List<String> getChosenForces(){
         List<String> chosenForces = new ArrayList<>();
         for(MenuItem menuItem: menubttn_associatedForces.getItems()){
@@ -142,14 +147,14 @@ public class VacationCreateScene implements Initializable {
             alerts.add("Select categories");
         }
         if (alerts.isEmpty()){
-//        vacationList.add(loggdInUser.getUsername());
             event.put("title", event_title);
             event.put("update", event_update);
             String categories = stringSetToStringWithComma(chosenCategories);
             event.put("categories",categories);
             String forces = stringSetToStringWithComma(chosenForces);
             event.put("forces", forces);
-    //        myController.addVacationToDataBase(vacationList);
+            event.put("username",loggedInUser.getName());
+            event.put("organization", loggedInUser.getOrganization().getName());
             showEventAlert("Event created successfully!");
             myController.addEvent(event);
             openEventsView();
@@ -173,11 +178,13 @@ public class VacationCreateScene implements Initializable {
     public void openEventsView() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            BorderPane pane = loader.load(getClass().getResource("VacationsScene.fxml").openStream());
+            BorderPane pane = loader.load(getClass().getResource("MainEventsView.fxml").openStream());
             rootPane.getChildren().setAll(pane);
-            VacationsView vacationsView = loader.getController();
-            vacationsView.setController(myController);
-            vacationsView.setAllEvents();
+            MainEventsView mainEventsView = loader.getController();
+            mainEventsView.setController(myController);
+            mainEventsView.setLoggedInUser(loggedInUser);
+            mainEventsView.setAllEvents();
+            mainEventsView.setAllCategories();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,13 +16,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.Views.VacationsView">
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.Views.MainEventsView">
    <top>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="109.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="316.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="122.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="180.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="260.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -32,11 +33,7 @@
                   <Font name="System Bold" size="28.0" />
                </font>
             </Label>
-            <Button fx:id="btn_home" mnemonicParsing="false" text="Home">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin></Button>
-            <Label fx:id="login_create" alignment="CENTER" text="Login/Create acount " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <Label fx:id="login_create" alignment="CENTER" prefHeight="21.0" prefWidth="159.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Label>
@@ -51,7 +48,7 @@
                   <MenuButton fx:id="menubttn_categories" mnemonicParsing="false" prefHeight="25.0" prefWidth="245.0" text="Categories">
 
                   </MenuButton>
-                  <Button fx:id="btn_search" mnemonicParsing="false" text="search" />
+                  <Button fx:id="btn_search" mnemonicParsing="false" onAction="#search" text="search" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -59,7 +56,8 @@
             </HBox>
             <TableView fx:id="tbl_events" prefHeight="348.0" prefWidth="450.0">
               <columns>
-                <TableColumn fx:id="clmn_title" prefWidth="75.0" text="Title" />
+              <TableColumn fx:id="clmn_id" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="clmn_title" prefWidth="45.0" text="Title" />
                   <TableColumn fx:id="clmn_published_on" prefWidth="100.66663360595703" text="Published On" />
                   <TableColumn fx:id="clmn_rep_user" prefWidth="125.33329772949219" text="Representative User" />
                   <TableColumn fx:id="clmn_status" prefWidth="52.66668701171875" text="Status" />
@@ -72,12 +70,14 @@
    <right>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
+            <ChoiceBox fx:id="user_chooser" prefHeight="31.0" prefWidth="100.0" />
+            <Button fx:id="login_btn" mnemonicParsing="false" onAction="#onLoginClicked" prefHeight="31.0" prefWidth="101.0" text="login" />
             <Button fx:id="btn_newEvent" mnemonicParsing="false" onAction="#newEventClicked" text="New Event">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btn_addCategoryToEvent" mnemonicParsing="false" prefHeight="46.0" prefWidth="90.0" text="Add Category To Event" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="btn_addCategoryToEvent" mnemonicParsing="false" onAction="#addCategoriesToEvent" prefHeight="46.0" prefWidth="90.0" text="Add Category To Event" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>

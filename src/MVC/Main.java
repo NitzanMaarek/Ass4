@@ -1,13 +1,12 @@
 package MVC;
 
-//import MVC.Users.VacationsView;
+//import MVC.Users.MainEventsView;
 import Entities.Category;
-import Entities.Event;
 import Entities.Organization;
 import Entities.User;
 import MVC.Controller.Controller;
 import MVC.Views.IView;
-import MVC.Views.VacationsView;
+import MVC.Views.MainEventsView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +15,6 @@ import javafx.stage.Stage;
 import MVC.Model.Model;
 //import MVC.Users.IView;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.*;
 
 public class Main extends Application{
@@ -26,20 +24,23 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception{
 
         Model model = new Model();
-
-//        Category category = new Category("凸(艹皿艹 )");
-//        Category category1 = new Category("凸(艹皿艹 )凸(艹皿艹 )");
+//
+//        Category category = new Category("Fire");
+//        Category category1 = new Category("Terror Attack");
+//        Category category2 = new Category("Robbery");
+//        Category category3 = new Category("Car Accident");
 //
 //        model.insertCategory(category);
 //        model.insertCategory(category1);
-////
-//
+//        model.insertCategory(category2);
+//        model.insertCategory(category3);
+
 //        List<String> catList = model.readAllCategories();
 //        System.out.println("CATEGOREIS");
 //        for (String cat : catList){
 //            System.out.print(cat+",");
 //        }
-//        System.out.println("--------------------------------------------------------------------------------");
+//        System.out.println("\n--------------------------------------------------------------------------------");
 //        Set<Category> a = new HashSet<>();
 //        a.add(category1);
 //        Organization organization = new Organization("nitzan Police");
@@ -59,7 +60,7 @@ public class Main extends Application{
 //            }
 //            System.out.println();
 //        }
-        System.out.println("---------------------------------------------------------------------------------------");
+//        System.out.println("\n---------------------------------------------------------------------------------------");
 //
 //        List<String> categoriesByID = model.readEventsCateogiresConnectionsByID(2);
 //
@@ -73,14 +74,14 @@ public class Main extends Application{
 //        for (String cat:categoriesByID2 ) {
 //            System.out.println(cat+",");
 //        }
-        System.out.println("---------------------------------------------------------------------------------------");
+//        System.out.println("---------------------------------------------------------------------------------------");
 
 
         Controller controller = new Controller(model);
 
         FXMLLoader loader = new FXMLLoader();
 
-        Parent root = loader.load(Main.class.getResourceAsStream("Views/VacationsScene.fxml"));
+        Parent root = loader.load(Main.class.getResourceAsStream("Views/MainEventsView.fxml"));
         System.out.println(Main.class.getResource("Style.css").toString());
         root.getStylesheets().add(Main.class.getResource("Style.css").toString());
         primaryStage.setTitle("Event4U");
@@ -97,8 +98,10 @@ public class Main extends Application{
 
         IView crudView = loader.getController();
         crudView.setController(controller);
-        ((VacationsView) crudView).setAllEvents();  //TODO: change class name VacationsView
-        ((VacationsView) crudView).setAllCategories();  //TODO: change class name VacationsView
+        User user = new User("Fire Department user", new Organization("Fire Department"));
+        ((MainEventsView) crudView).setLoggedInUser(user);
+        ((MainEventsView) crudView).setAllEvents();  //TODO: change class name MainEventsView
+        ((MainEventsView) crudView).setAllCategories();  //TODO: change class name MainEventsView
         primaryStage.show();
 
     }

@@ -29,4 +29,11 @@ public class Controller {
     public void addEvent(Map<String, String> event) {
         myModel.addEvent(event);
     }
+
+    public List<String> getCategoriesByEventID(int id){
+        return myModel.readEventsCateogiresConnectionsByID(id);
+    }
+
+    public void insertEventsCateogiresConnections(int id , String category){
+        myModel.insertEventsCateogiresConnections(id, category);}
 }
