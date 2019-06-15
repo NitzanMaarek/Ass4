@@ -12,7 +12,6 @@ public class User {
     private int warningCounter;     //3 warnings means demotion in rank
     private int passAttempts;       //i think 3 pass attempts means account status should be locked.
     private Organization organization;
-    private EntityController entityController = EntityController.getInstance();
 
 
     public User(){
